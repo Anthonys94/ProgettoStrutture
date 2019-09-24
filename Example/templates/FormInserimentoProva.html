@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<!--<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>-->
+
+<head>
+	<title>Login Platform</title>
+	<meta charset="UTF-8">
+	<!-- con questo comando con il tag width= device-width rendiamo la form adattabile alla larghezza del dispositivo e
+	initial-scale = 1, mi garantisce che inizialmente non ci sia zoom e mi fa vedere la form bene, ATTENZIONE con device-width,
+	potrei avere problemi con i dispositivi mobili quando si gira lo schermo quindi potremmo decidere di toglierlo-->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="../static/images/icons/favicon.ico"/> <!--richiama l'iconcina in alto vicino al title-->
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../static/vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../static/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../static/fonts/iconic/css/material-design-iconic-font.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../static/vendor/animate/animate.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../static/vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../static/vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../static/vendor/select2/select2.min.css">
+<!--===============================================================================================	-->
+	<link rel="stylesheet" type="text/css" href="../static/vendor/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="../static/css/util.css"> <!--i fogli di stile della grafica della form (colori forme ecc)-->
+ 	<link rel="stylesheet" type="text/css" href="../static/css/main.css"> <!--fogli di stile che mi determinano la posizione degli elementi della pagina web-->
+<!--===============================================================================================-->
+</head>
+<body>
+
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100 p-t-85 p-b-20">
+				<form class="login100-form validate-form" method="POST"> <!--action="http://localhost:8080/chat_db/Accedi"> <!--Su questa classe abbiamo un evento in jquery che fa una posta alla servlet che fa il login-->
+					<span class="login100-form-title p-b-70">
+						Aggiungi nuova tipologia di prova
+					</span>
+					<!--<span class="login100-form-avatar"> <!-- è l'immagine prima del login, in teoria si potrebbe caricare l'immagine quando l'utente inserisce l'email ma mi scoccio
+						<img src="" alt="AVATAR">
+					</span> -->
+
+					<!-- input tex box del campo email -->
+					<div id="tipoProva" class="wrap-input100 validate-input m-t-85 m-b-35">
+						<input class="input100" type="text" name="Tipologia Prova" id="TipProva">
+						<span class="focus-input100" data-placeholder="Tipologia Prova"></span>
+					</div>
+
+					<!-- button -->
+					<div id="divbtn" class="container-login100-form-btn">
+						<button id="addTipoProva" class="login100-form-btn">
+							Aggiungi
+						</button>
+					</div>
+
+				</form>
+			</div>
+		</div>
+	</div>
+
+
+	<div id="dropDownSelect1"></div>
+
+<!--===============================================================================================-->
+<!--librerie jquery -->
+	<script src="../static/vendor/jquery/jquery-3.2.1.min.js"></script>
+	<!--  <script src="vendor/jquery/jquery-1.4.2.min.js"></script> -->
+<!--===============================================================================================-->
+	<script src="../static/vendor/redirect/jquery.redirect.js"></script>
+<!--===============================================================================================-->
+  	<script src="../static/vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+	<script src="../static/vendor/bootstrap/js/popper.js"></script>
+	<script src="../static/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="../static/vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="../static/vendor/daterangepicker/moment.min.js"></script>
+	<script src="../static/vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+	<script src="../static/vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+
+  	<!-- qui sono descritti tutti gli eventi che può vedere l'utente -->
+    <script src="../static/js/Operation.js"></script>
+</body>
+</html>
