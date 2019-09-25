@@ -1,18 +1,8 @@
 from flask import Flask, render_template, json, request
-from flaskext.mysql import MySQL
 from Model.gestore import *
 #from werkzeug import generate_password_hash, check_password_hash
 
-mysql = MySQL()
 app = Flask(__name__)
-
-# MySQL configurations
-app.config['MYSQL_DATABASE_USER'] = 'jay'
-app.config['MYSQL_DATABASE_PASSWORD'] = 'jay'
-app.config['MYSQL_DATABASE_DB'] = 'BucketList'
-app.config['MYSQL_DATABASE_HOST'] = 'localhost'
-mysql.init_app(app)
-
 
 @app.route('/')
 def main():
@@ -21,7 +11,7 @@ def main():
     return render_template('index.html')
 
 @app.route('/',methods=['POST'])
-def main_post():
+def main_post_login():
     _name = request.form['email']
     _email = request.form['pass']
     print(_name)
@@ -38,7 +28,7 @@ def upload_Materiale():
     if newMaterial == '':
         print('vuoto')
     else:
-        gestore = Gestore()
+        gestore = GestoreForWrite()
         gestore.buildMateriale(newMaterial)
     return render_template('home.html')
 
@@ -46,9 +36,33 @@ def upload_Materiale():
 def main_Prova():
     return render_template('FormInserimentoProva.html')
 
+@app.route('/FormInserimentoProva.html',methods=['POST'])
+def upload_prova():
+    newProva = request.form['TipologiaProva']
+    if newProva=='':
+        print('vuoto')
+    else:
+        gestore = GestoreForWrite()
+        gestore.buildTipoProva(newProva)
+        return render_template('home.html')
+
+
 @app.route('/FormInserimentoStruttura.html',methods=['GET'])
 def main_Struttura():
     return render_template('FormInserimentoStruttura.html')
+
+@app.route('/FormInserimentoStruttura.html',methods=['POST'])
+def upload_struttura():
+    newStruttura = request.form['TipologiadiStruttura']
+    if newStruttura=='':
+        print('vuoto')
+    else:
+        descrizione = request.form['Descrizionestruttura']
+        gestore = GestoreForWrite()
+        gestore.buildTipologiaStruttura(newStruttura, descrizione)
+        return render_template('home.html')
+
+
 
 @app.route('/FormInserimentoDocumento.html',methods=['GET'])
 def main_Documento():

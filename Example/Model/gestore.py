@@ -1,12 +1,12 @@
-import json
-from Dao.dao import *
+from Dao.DBManager import*
 
-class Gestore:
+class GestoreForWrite:
 
-    def __init__(self) -> None:
+    def __init__(self):
         super().__init__()
 
-    def buildDocument(self, numeroPratica, dataRichiesta, committente, luogo, provincia, descrizione, tipologiaStruttura, tipoProva, materiale, allegatoCertificato):
+    def buildDocument(self, numeroPratica, dataRichiesta, committente, luogo, provincia, descrizione,
+                      tipologiaStruttura, tipoProva, materiale, allegatoCertificato):
         data = {}
         data['numeroPratica'] = numeroPratica
         data['dataRichiesta'] = dataRichiesta
@@ -17,27 +17,25 @@ class Gestore:
         data['tipologiaStruttura'] = tipologiaStruttura
         data['tipoProva'] = tipoProva
         data['materiale'] = materiale
-        json_data = json.dumps(data)
-        dao = daoGestore()
-        dao.uploadDocumento(json_data)
 
-    def buildTipologiaStruttura(self, tipologiaStruttura):
+        DBConnectionManager.getInstance().addCertificato(data)
+
+
+    def buildTipologiaStruttura(self, tipologiaStruttura, descrizione):
         data = {}
         data['tipologiaStruttura'] = tipologiaStruttura
-        json_data = json.dumps(data)
-        dao = daoGestore()
-        dao.uploadStructure(json_data)
+        data['descrizione'] = descrizione
+
+        DBConnectionManager.getInstance().addStruttura(data)
 
     def buildTipoProva(self, tipoProva):
         data = {}
         data['tipoProva'] = tipoProva
-        json_data = json.dumps(data)
-        dao = daoGestore()
-        dao.uploadProva(json_data)
+
+        DBConnectionManager.getInstance().addProva(data)
 
     def buildMateriale(self, materiale):
         data = {}
         data['materiale'] = materiale
-        json_data = json.dumps(data)
-        dao = daoGestore()
-        dao.uploadMaterial(json_data)
+
+        DBConnectionManager.getInstance().addMateriale(data)
