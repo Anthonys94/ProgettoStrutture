@@ -2,13 +2,10 @@ import os
 import urllib.request
 from flask import Flask, flash, render_template, json, request, redirect
 from Model.gestore import *
-#from werkzeug import generate_password_hash, check_password_hash
+# from werkzeug import generate_password_hash, check_password_hash
 from werkzeug.utils import secure_filename
 
-
 app = Flask(__name__)
-
-
 
 UPLOAD_FOLDER = '/Users/antonio/Downloads'
 
@@ -22,35 +19,37 @@ ALLOWED_EXTENSIONS = set(['pdf', 'png', 'jpg', 'jpeg', 'gif'])
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
-'''
-@app.route('/', methods=['POST'])
+
+@app.route('/FormInserimentoDocumento.html', methods=['POST'])
 def upload_file():
-	if request.method == 'POST':
+    if request.method == 'POST':
         # check if the post request has the file part
-		if 'file' not in request.files:
-			flash('No file part')
-			return redirect(request.url)
-		file = request.files['file']
-		if file.filename == '':
-			flash('No file selected for uploading')
-			return redirect(request.url)
-		if file and allowed_file(file.filename):
-			filename = secure_filename(file.filename)
-			file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-			flash('File successfully uploaded')
-			return redirect('/')
-		else:
-			flash('Allowed file types are txt, pdf, png, jpg, jpeg, gif')
-			return redirect(request.url)
-'''
+        if 'file' not in request.files:
+            flash('No file part')
+            return redirect(request.url)
+        file = request.files['file']
+        if file.filename == '':
+            flash('No file selected for uploading')
+            return redirect(request.url)
+        if file and allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            flash('File successfully uploaded')
+            return redirect('/home.html')
+        else:
+            flash('Allowed file types are txt, pdf, png, jpg, jpeg, gif')
+            return redirect(request.url)
+
 
 @app.route('/')
 def main():
-    #dao = daoGestore()
-    #dao.readMaterial()
+    # dao = daoGestore()
+    # dao.readMaterial()
     return render_template('index.html')
 
-@app.route('/',methods=['POST'])
+
+@app.route('/', methods=['POST'])
 def main_post_login():
     _name = request.form['email']
     _email = request.form['pass']
@@ -58,11 +57,13 @@ def main_post_login():
     print(_email)
     return render_template('home.html')
 
-@app.route('/FormInserimentoMateriale.html',methods=['GET'])
+
+@app.route('/FormInserimentoMateriale.html', methods=['GET'])
 def main_Materiale():
     return render_template('FormInserimentoMateriale.html')
 
-@app.route('/FormInserimentoMateriale.html',methods=['POST'])
+
+@app.route('/FormInserimentoMateriale.html', methods=['POST'])
 def upload_Materiale():
     newMaterial = request.form['TipoMateriale']
     if newMaterial == '':
@@ -72,14 +73,16 @@ def upload_Materiale():
         gestore.buildMateriale(newMaterial)
     return render_template('home.html')
 
-@app.route('/FormInserimentoProva.html',methods=['GET'])
+
+@app.route('/FormInserimentoProva.html', methods=['GET'])
 def main_Prova():
     return render_template('FormInserimentoProva.html')
 
-@app.route('/FormInserimentoProva.html',methods=['POST'])
+
+@app.route('/FormInserimentoProva.html', methods=['POST'])
 def upload_prova():
     newProva = request.form['TipologiaProva']
-    if newProva=='':
+    if newProva == '':
         print('vuoto')
     else:
         gestore = GestoreForWrite()
@@ -87,14 +90,15 @@ def upload_prova():
         return render_template('home.html')
 
 
-@app.route('/FormInserimentoStruttura.html',methods=['GET'])
+@app.route('/FormInserimentoStruttura.html', methods=['GET'])
 def main_Struttura():
     return render_template('FormInserimentoStruttura.html')
 
-@app.route('/FormInserimentoStruttura.html',methods=['POST'])
+
+@app.route('/FormInserimentoStruttura.html', methods=['POST'])
 def upload_struttura():
     newStruttura = request.form['TipologiadiStruttura']
-    if newStruttura=='':
+    if newStruttura == '':
         print('vuoto')
     else:
         descrizione = request.form['Descrizionestruttura']
@@ -103,10 +107,10 @@ def upload_struttura():
         return render_template('home.html')
 
 
-
-@app.route('/FormInserimentoDocumento.html',methods=['GET'])
+@app.route('/FormInserimentoDocumento.html', methods=['GET'])
 def main_Documento():
     return render_template('FormInserimentoDocumento.html')
+
 
 if __name__ == "__main__":
     app.run(port=5002)
