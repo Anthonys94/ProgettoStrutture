@@ -1,16 +1,8 @@
-from Dao.DBManager import*
-import json
-a = DBConnectionManager.getInstance()
+from pymongo import MongoClient
 
-data = {}
-data['numeroPratica'] = 'a'
-data['dataRichiesta'] = 'b'
-data['committente'] = 'c'
-data['luogo'] = 'd'
-data['provincia'] = 'e'
-data['descrizione'] = 'f'
-data['tipologiaStruttura'] = 'g'
-data['tipoProva'] = 'h'
-data['materiale'] = 'i'
+client = MongoClient('localhost', 27017 )
+db =  client.Strutture
 
-a.addCertificato(data)
+x = db.struttura.find()
+for element in x:
+    print(element)

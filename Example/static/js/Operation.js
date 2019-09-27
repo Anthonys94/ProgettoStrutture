@@ -1,12 +1,10 @@
-
-
-     $('#ProvaHandle').on('click',function(){
+  $('#ProvaHandle').on('click',function(){
     	var check = true;
        location.href= "FormInserimentoProva.html";
         window.location.href = url;
     });
 
-   $('#MaterialeHandle').on('click',function(){
+  $('#MaterialeHandle').on('click',function(){
     	var check = true;
         location.href= "FormInserimentoMateriale.html";
     });

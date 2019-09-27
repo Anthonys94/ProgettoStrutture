@@ -6,7 +6,7 @@ class GestoreForWrite:
         super().__init__()
 
     def buildDocument(self, numeroPratica, dataRichiesta, committente, luogo, provincia, descrizione,
-                      tipologiaStruttura, tipoProva, materiale, allegatoCertificato):
+                      tipologiaStruttura, tipoProva, materiale, allegatoCertificato, filename):
         data = {}
         data['numeroPratica'] = numeroPratica
         data['dataRichiesta'] = dataRichiesta
@@ -18,7 +18,7 @@ class GestoreForWrite:
         data['tipoProva'] = tipoProva
         data['materiale'] = materiale
 
-        DBConnectionManager.getInstance().addCertificato(data)
+        DBConnectionManager.getInstance().addCertificato(data, allegatoCertificato, filename)
 
 
     def buildTipologiaStruttura(self, tipologiaStruttura, descrizione):
@@ -39,3 +39,12 @@ class GestoreForWrite:
         data['materiale'] = materiale
 
         DBConnectionManager.getInstance().addMateriale(data)
+
+    def getStrutture(self):
+        return DBConnectionManager.getInstance().getStrutture()
+
+    def getProva(self):
+        return DBConnectionManager.getInstance().getProva()
+
+    def getMateriale(self):
+        return DBConnectionManager.getInstance().getMateriale()

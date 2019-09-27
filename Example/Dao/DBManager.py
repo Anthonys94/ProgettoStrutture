@@ -1,5 +1,6 @@
 import pymongo
 from pymongo import MongoClient
+from gridfs import GridFS
 
 class DBConnectionManager:
     # private attriute
@@ -23,9 +24,19 @@ class DBConnectionManager:
             DBConnectionManager.__instance = self
 
 
-    def addCertificato(self, certificatiJSON):
+    def addCertificato(self, certificatiJSON, file, filename):
+
         client = MongoClient(DBConnectionManager.__dbname, DBConnectionManager.__dbport)
-        db =  client.Strutture
+        db = client.Strutture
+        grid_fs = GridFS(db)
+
+        certificatiJSON['filename'] = filename
+        with grid_fs.new_file(filename=filename) as fp:
+            fp.write(file)
+            file_id = fp._id
+
+        certificatiJSON['file_id'] = file_id
+
         db.certificato.insert_one(certificatiJSON)
         client.close()
 
@@ -46,3 +57,24 @@ class DBConnectionManager:
         db = client.Strutture
         db.struttura.insert_one(StrutturaJSON)
         client.close()
+
+    def getStrutture(self):
+        client = MongoClient(DBConnectionManager.__dbname, DBConnectionManager.__dbport)
+        db = client.Strutture
+        strutture = db.struttura.find()
+        client.close()
+        return strutture
+
+    def getProva(self):
+        client = MongoClient(DBConnectionManager.__dbname, DBConnectionManager.__dbport)
+        db = client.Strutture
+        prove = db.prova.find()
+        client.close()
+        return prove
+
+    def getMateriale(self):
+        client = MongoClient(DBConnectionManager.__dbname, DBConnectionManager.__dbport)
+        db = client.Strutture
+        materiale = db.materiale.find()
+        client.close()
+        return materiale
