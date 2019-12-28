@@ -14,10 +14,27 @@
         location.href = "FormInserimentoStruttura.html";
     });
 
-    $('#addDocument').on('click',function(){
+      $('#addDocument').on('click',function(){
     	var check = true;
         location.href = "FormInserimentoDocumento.html";
     });
+
+    $('#userHandle').on('click',function(){
+    	var check = true;
+        location.href = "gestioneUtenze.html";
+    });
+
+    $('#Query').on('click',function(){
+    	var check = true;
+        location.href = "ricerca.html";
+    });
+
+    $('#DeleteDocument').on('click',function(){
+    	var check = true;
+        location.href = "FormEliminaDocumento.html";
+    });
+
+
 
       $('.input100').each(function(){
         $(this).on('blur', function(){
@@ -28,5 +45,19 @@
                 $(this).removeClass('has-val');
             }
         })
-    })
+    });
+
+$(document).ready(function(){
+    var cookie = {};
+    //cookie= JSON.parse(cookie);
+
+    elementC = document.cookie.split("; ")
+
+    for(index=0; index<elementC.length; index++){
+        app = elementC[index].split("=");
+        cookie[app[0]] = app[1];
+    }
+    document.getElementById('welcome').value = "Benvenuto: " + cookie['username'];
+});
+
 

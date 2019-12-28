@@ -1,4 +1,4 @@
-
+var Url = 'http://127.0.0.1:5000';
 /*
 function onConnect(status) {
   if (status == Strophe.Status.CONNECTING) {
@@ -21,13 +21,12 @@ function onConnect(status) {
   }
 }
 */
-(function ($) {
-    "use strict";
 
 
-    /*==================================================================
-    [ Focus input ]Quando inserisci un valore nella texbox non permette che la scritta username o password
-     si sovrappona al valore dato, e lo fa inserendo una classe, mentre la rimuove quando invece nn c'è un valore*/
+$(document).ready(function(){
+
+
+
     $('.input100').each(function(){
         $(this).on('blur', function(){
             if($(this).val().trim() != "") {
@@ -37,20 +36,11 @@ function onConnect(status) {
                 $(this).removeClass('has-val');
             }
         })    
-    })
+    });
   
   
     /*==================================================================*/
 
-    $('.validate-form').on('submit',function(){
-    	var check = true;
-		document.getElementById("btn").disabled=true;
-        var url = "hello.html";
-        window.location.href = url;
-    });
-
-  
 
 
-
-})(jQuery);
+});

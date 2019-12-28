@@ -5,11 +5,8 @@
     pageEncoding="ISO-8859-1"%>-->
 
 <head>
-    <title>Home</title>
+    <title>Elimina documento</title>
     <meta charset="UTF-8">
-    <!-- con questo comando con il tag width= device-width rendiamo la form adattabile alla larghezza del dispositivo e
-    initial-scale = 1, mi garantisce che inizialmente non ci sia zoom e mi fa vedere la form bene, ATTENZIONE con device-width,
-    potrei avere problemi con i dispositivi mobili quando si gira lo schermo quindi potremmo decidere di toglierlo-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--===============================================================================================-->
     <link rel="icon" type="image/png" href="../static/images/icons/favicon.ico"/>
@@ -40,76 +37,43 @@
 <body>
 <nav class="navbar">
     <div class="container-fluid">
-        <div class="navbar-header">
+        <div class="navbar-brand">
             <img src="../static/images/logoUni.png" width="100" height="100" class="navbar-brand">
-            <input type="text" id="welcome" readonly class="navbar navbar-text" value="Benvenuto:"> </input>
+            <input type="text" readonly id="welcome" class="navbar navbar-text" value="Benvenuto : "> </input>
         </div>
-        <ul class="nav navbar-nav">
-            <li class="active"><a href="/logOut">Logout</a></li>
-        </ul>
+
+        <div class="navbar-nav navbar-expand-lg" >
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/home.html">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/logOut">Logout</a>
+                </li>
+            </ul>
+        </div>
+
     </div>
 </nav>
 
 <div class="limiter">
     <div class="container-login100">
-        <div class="wrap-home100 p-t-5 p-b-20">
-            <!--<form class="login100-form validate-form">-->
-            <span class="login100-form-title p-b-70">
-						Le operazioni disponibili:
-					</span>
+        <div class="wrap-login101 p-t-85 p-b-20">
+            <div>
+                <span class="login100-form-title p-b-70">Elimina Documento</span>
+                <div class="wrap-input100 validate-input m-t-85 m-b-35">
+                    <input class="input100" type="text" name="TextPratica" id="NPratica" required>
+                    <span class="focus-input100" data-placeholder="Numero di Pratica"></span>
+                </div>
 
-            <!-- button -->
-            <div id="divbtn" class="container-login100-form-btn">
-                <button id="DeleteDocument" class="login100-form-btn">
-                    Elimina Certificato
-                </button>
+                <div id="divbtn" class="container-login100-form-btn">
+                    <button id="btnDelete" class="login100-form-btn">
+                        Delete!
+                    </button>
+                </div>
+
 
             </div>
-            <br>
-
-            <div id="divbtn" class="container-login100-form-btn">
-                <button id="addDocument" class="login100-form-btn">
-                    Nuovo Certificato
-                </button>
-
-            </div>
-            <br>
-
-            <div id="divbtn" class="container-login100-form-btn">
-                <button id="ProvaHandle" class="login100-form-btn">
-                    Nuova tipologia di Prova
-                </button>
-            </div>
-            <br>
-
-            <div id="divbtn" class="container-login100-form-btn">
-                <button id="MaterialeHandle" class="login100-form-btn">
-                    Nuovo Materiale
-                </button>
-            </div>
-            <br>
-            <div id="divbtn" class="container-login100-form-btn">
-                <button id="StrutturaHandle" class="login100-form-btn">
-                    Nuova Tipologia di struttura
-                </button>
-            </div>
-            <br>
-
-            <div id="divbtn" class="container-login100-form-btn">
-                <button id="userHandle" class="login100-form-btn">
-                    Gestione utenze
-                </button>
-            </div>
-            <br>
-            <div id="divbtn" class="container-login100-form-btn">
-                <button id="Query" class="login100-form-btn">
-                    Ricerca
-                </button>
-            </div>
-
-
-            <!-- link a User o password dimenticati e registrazione -->
-            <!--</form>-->
         </div>
     </div>
 </div>
@@ -120,6 +84,7 @@
 <!--===============================================================================================-->
 <!--librerie jquery -->
 <script src="../static/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--  <script src="vendor/jquery/jquery-1.4.2.min.js"></script> -->
 <!--===============================================================================================-->
 <script src="../static/vendor/redirect/jquery.redirect.js"></script>
 <!--===============================================================================================-->
@@ -135,7 +100,9 @@
 <!--===============================================================================================-->
 <script src="../static/vendor/countdowntime/countdowntime.js"></script>
 <!--===============================================================================================-->
-<script src="../static/js/Operation.js"></script>
+
+<!-- qui sono descritti tutti gli eventi che può vedere l'utente -->
+<script src="../static/js/OperationeDeleteDocument.js"></script>
 
 </body>
 </html>
