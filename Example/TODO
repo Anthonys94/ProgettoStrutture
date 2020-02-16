@@ -1,0 +1,23 @@
+TO DO:
+
+1) Fare per foglio di apertura pratica quanto fatto per foglio  lavoro (done)
+2) aggiustare la modifica di un campo che faccia a cascata per tutti i documenti che lo comprendono (ok)
+3) mettere una form per contattare il dipartimento (OK)
+4) gestire bene il .pdf (OK)
+5) fare i profili utenti
+    OPERATORE:
+        inserisce i documenti,
+        modifica solo le info base
+        vede i materiali, prove e strutture
+    LEADER:
+        inserisce documento
+        inserisce prova  struttura e materiale
+        modifica il documento, ma non lo elimina
+        fa una ricerca senza download
+     USER:
+        vede statistiche
+        fa una ricerca semplice.
+6) aggiustare la grafica
+7) debug generale.
+8) togliere il master
+

@@ -4,6 +4,7 @@ import datetime
 
 client = MongoClient('localhost', 27017)
 db = client.Strutture
+'''
 filename = []
 filename.append(db.documento.find({"_id": '1'})[0]['filename'])
 cursor = db.certificato.find({"_id.NumeroPratica": '1'}, {"_id":0 ,"filename": 1})
@@ -20,7 +21,6 @@ c = db.fs.chunks.find({"files_id":{"$in":obj}},{"_id":1})
 for x in c:
     print(x)
 client.close()
-'''
 ob={}
 list = []
 list2 = []
@@ -53,5 +53,23 @@ for element in province:
     print(element)
 client.close()
 
-
 '''
+import pandas as pd
+import datetime
+client = MongoClient('localhost', 27017)
+db = client.Strutture
+tab = pd.DataFrame()
+result =db.documento.aggregate([{"$group": {"_id": "$data", "count": {"$sum":1}}}])
+for r in result:
+    tab = tab.append({"date": r['_id'],
+                "conteggio": r['count']}, ignore_index=True)
+
+print(tab)
+tab = tab.set_index('date')
+
+
+x = tab.resample('10A').sum()
+app = x.reset_index()
+print(app.shape[0])
+print(app.loc[0].date.date())
+client.close()
