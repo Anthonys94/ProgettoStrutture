@@ -7,9 +7,6 @@
 <head>
     <title>Home</title>
     <meta charset="UTF-8">
-    <!-- con questo comando con il tag width= device-width rendiamo la form adattabile alla larghezza del dispositivo e
-    initial-scale = 1, mi garantisce che inizialmente non ci sia zoom e mi fa vedere la form bene, ATTENZIONE con device-width,
-    potrei avere problemi con i dispositivi mobili quando si gira lo schermo quindi potremmo decidere di toglierlo-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--===============================================================================================-->
     <link rel="icon" type="image/png" href="../static/images/icons/favicon.ico"/>
@@ -45,7 +42,14 @@
             <input type="text" id="welcome" readonly class="navbar navbar-text" value="Benvenuto:"> </input>
         </div>
         <ul class="nav navbar-nav">
-            <li class="active"><a href="/logOut">Logout</a></li>
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/Contatti.html">Contatti <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/logOut">Logout</a>
+                </li>
+            </ul>
         </ul>
     </div>
 </nav>
@@ -60,37 +64,31 @@
 
             <!-- button -->
             <div id="divbtn" class="container-login100-form-btn">
-                <button id="DeleteDocument" class="login100-form-btn">
-                    Elimina Certificato
+                <button id="GestioneDocumenti" class="login100-form-btn">
+                    Gestione Documenti
                 </button>
 
             </div>
             <br>
 
             <div id="divbtn" class="container-login100-form-btn">
-                <button id="addDocument" class="login100-form-btn">
-                    Nuovo Certificato
+                <button id="GestioneMateriali" class="login100-form-btn">
+                    Gestione Materiali
                 </button>
 
             </div>
             <br>
 
             <div id="divbtn" class="container-login100-form-btn">
-                <button id="ProvaHandle" class="login100-form-btn">
-                    Nuova tipologia di Prova
+                <button id="GestioneProve" class="login100-form-btn">
+                    Gestione Prove
                 </button>
             </div>
             <br>
 
             <div id="divbtn" class="container-login100-form-btn">
-                <button id="MaterialeHandle" class="login100-form-btn">
-                    Nuovo Materiale
-                </button>
-            </div>
-            <br>
-            <div id="divbtn" class="container-login100-form-btn">
-                <button id="StrutturaHandle" class="login100-form-btn">
-                    Nuova Tipologia di struttura
+                <button id="GestioneStrutture" class="login100-form-btn">
+                    Gestione Strutture
                 </button>
             </div>
             <br>
@@ -106,16 +104,20 @@
                     Ricerca
                 </button>
             </div>
+            <br>
+            <div id="divbtn" class="container-login100-form-btn">
+                <button id="Report" class="login100-form-btn">
+                    Statistiche
+                </button>
+            </div>
 
 
-            <!-- link a User o password dimenticati e registrazione -->
-            <!--</form>-->
         </div>
     </div>
 </div>
 
 
-<div id="dropDownSelect1"></div>
+
 
 <!--===============================================================================================-->
 <!--librerie jquery -->
@@ -135,7 +137,7 @@
 <!--===============================================================================================-->
 <script src="../static/vendor/countdowntime/countdowntime.js"></script>
 <!--===============================================================================================-->
-<script src="../static/js/Operation.js"></script>
+<script src="../static/js/Operation_home_Master.js"></script>
 
 </body>
 </html>

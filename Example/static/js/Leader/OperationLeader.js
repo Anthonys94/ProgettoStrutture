@@ -16,12 +16,12 @@ $('#GestioneStrutture').on('click', function () {
 
 $('#GestioneDocumenti').on('click', function () {
     var check = true;
-    location.href = "GestioneDocumentiLeader.html";
+    location.href = "GestioneDocumento.html";
 });
 
 $('#Query').on('click', function () {
     var check = true;
-    location.href = "Ricerca_ad_Leader.html";
+    location.href = "Ricerca.html";
 });
 
 

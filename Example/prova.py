@@ -53,7 +53,7 @@ for element in province:
     print(element)
 client.close()
 
-'''
+
 import pandas as pd
 import datetime
 client = MongoClient('localhost', 27017)
@@ -73,3 +73,15 @@ app = x.reset_index()
 print(app.shape[0])
 print(app.loc[0].date.date())
 client.close()
+'''
+
+client = MongoClient('localhost',27017)
+db = client.Strutture
+grid_fs = GridFS(db)
+grid_fs_file = grid_fs.find_one({'filename': '222_unique.pdf'})
+bytes = grid_fs_file.read()
+client.close()
+
+f = open('D:/Michela/file2.pdf', 'wb')
+f.write(bytes)
+f.close()

@@ -1,6 +1,6 @@
 $('#Query').on('click', function () {
     var check = true;
-    location.href = "ricerca.html";
+    location.href = "Ricerca.html";
 });
 
 $('#Report').on('click', function () {

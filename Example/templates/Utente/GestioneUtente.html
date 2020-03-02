@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!--<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>-->
+
+<head>
+    <title>Gestione Utenze</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="../../static/images/icons/favicon.ico"/>
+    <!--richiama l'iconcina in alto vicino al title-->
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="../../static/vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="../../static/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="../../static/fonts/iconic/css/material-design-iconic-font.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="../../static/vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="../../static/vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="../../static/vendor/animsition/css/animsition.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="../../static/vendor/select2/select2.min.css">
+    <!--===============================================================================================	-->
+    <link rel="stylesheet" type="text/css" href="../../static/vendor/daterangepicker/daterangepicker.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="../../static/css/util.css">
+    <!--i fogli di stile della grafica della form (colori forme ecc)-->
+    <link rel="stylesheet" type="text/css" href="../../static/css/main.css">
+    <!--fogli di stile che mi determinano la posizione degli elementi della pagina web-->
+    <!--===============================================================================================-->
+</head>
+<body>
+<nav class="navbar">
+    <div class="container-fluid">
+        <div class="navbar-brand">
+            <img src="../../static/images/logoUni.png" width="100" height="100" class="navbar-brand">
+            <input type="text" readonly id="welcome" class="navbar navbar-text" value="Benvenuto : "> </input>
+        </div>
+
+        <div class="navbar-nav navbar-expand-lg" >
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/home.html">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/logOut">Logout</a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</nav>
+
+<div class="limiter">
+    <div class="container-login100">
+        <div class="wrap-login101 p-t-85 p-b-20">
+            <span class="login100-form-title p-b-70">
+						Sezione Utenti
+            </span>
+            <button class="login100-form-btn" id="bntNewUtente">Inserisci Nuovo Utente</button>
+            <br>
+            <button class="login100-form-btn" id="bntUpdateUtente">Modifica Ruolo Utente</button>
+            <br>
+            <button class="login100-form-btn" id="bntAttivaUtente">Riattiva Utente</button>
+            <br>
+            <button class="login100-form-btn" id="bntDisattivaUtente">Disattiva Utente</button>
+            <br>
+            <button class="login100-form-btn" id="mostraAttivi">Mostra utenti attivi</button>
+            <br>
+            <button class="login100-form-btn" id="mostraNonAttivi">Mostra utenti disattivati</button>
+            <br>
+            <button class="login100-form-btn" id="bntAnnulla" hidden>Annulla</button>
+            <br>
+
+            <div id="UtentiAttivi" hidden>
+                <br>
+                <br>
+                <table id="TableAttivi" rules="all" style=margin-left:auto;margin-right:auto;width:100%>
+                        <tr>
+                            <th>CF</th>
+                            <th>Ruolo</th>
+                            <th>Data Iscrizione</th>
+                            <th>Scade</th>
+                        </tr>
+                </table>
+            </div>
+
+            <div id="UtentiNonAttivi" hidden>
+                <br>
+                <br>
+                <table id="TableNonAttivi" rules="all"  style=margin-left:auto;margin-right:auto;width:100%>
+                        <tr>
+                            <th>CF</th>
+                            <th>Ruolo</th>
+                            <th>Data Iscrizione</th>
+                        </tr>
+                </table>
+
+            </div>
+
+            <div  id="idForm" hidden>
+                <span class="title">Nuovo Utente</span>
+                <div class="wrap-input100 validate-input m-t-85 m-b-35">
+                    <input class="input100" type="text" name="Nome" id="idNome" required>
+                    <span class="focus-input100" data-placeholder="Nome Utente"></span>
+                </div>
+
+                 <div class="wrap-input100 validate-input m-t-85 m-b-35">
+                    <input class="input100" type="text" name="Cognome" id="idCognome" required>
+                    <span class="focus-input100" data-placeholder="Cognome Utente"></span>
+                </div>
+
+                <div class="wrap-input100 validate-input m-t-85 m-b-35">
+                    <span class="focus-input100" data-placeholder="Provincia di Nascita"></span>
+                    <br>
+                    <br>
+                    <select id="ListaProvince" name="Provincia">
+                        <option value="" selected disabled>Scegli Provincia</option>
+                    </select>
+                </div>
+
+                <div class="wrap-input100 validate-input m-t-85 m-b-35">
+                    <span class="focus-input100" data-placeholder="Comune"></span>
+                    <br>
+                    <br>
+                    <select id="ListaComuni" name="Comune">
+                        <option value="" selected disabled>Scegli Comune</option>
+                    </select>
+                 </div>
+
+                <div class="wrap-input100 validate-input m-t-85 m-b-35">
+                    <span class="focus-input100" data-placeholder="Data di Nascita"></span>
+                    <br>
+                    <br>
+                    <input type="date" name="bday" id="DataDiNascita" required>
+
+                </div>
+
+                <div class="wrap-input100 validate-input m-t-85 m-b-35">
+                    <input class="input100" type="text" name="Codice Fiscale" id="idCodFis" required>
+                    <span class="focus-input100" data-placeholder="Codice Fiscale"></span>
+                </div>
+
+                <div class="wrap-input100 validate-input m-t-85 m-b-35">
+                    <input class="input100" type="text" name="Password" id="idPassword" required>
+                    <span class="focus-input100" data-placeholder="Password"></span>
+                </div>
+
+                <div class="wrap-input100 validate-input m-t-85 m-b-35">
+                    <span class="focus-input100" data-placeholder="Ruolo"></span>
+                    <br>
+                    <br>
+                    <select id="ListaRuoli" name="Ruolo">
+                        <option value="" selected disabled>Scegli Ruolo</option>
+                        <option value="Amministratore" >Amministratore</option>
+                        <option value="Operatore" >Operatore</option>
+                        <option value="Leader" >Leader</option>
+                        <option value="Utente Semplice" >Utente Semplice</option>
+                        <option value="Utente Pro" >Utente Pro</option>
+                    </select>
+                </div>
+
+                <div class="wrap-input100 validate-input m-t-85 m-b-35">
+                    <input type="checkbox" id="Scade" name="Scade" checked>
+                    <label for="Scade">Validità 30 giorni</label>
+                </div>
+
+                <div id="divbtn" class="container-login100-form-btn">
+                    <input type="button" id="btnUpload" class="login100-form-btn" onclick="submit_form_add_Utente()"  value = "Aggiungi Utente" />
+                </div>
+            </div>
+
+            <div id="UpdateDiv" hidden>
+                <span class="title">Modifica Utente</span>
+                <div class="wrap-input100 validate-input m-t-85 m-b-35">
+                    <input class="input100" type="text" name="Codice Fiscale" id="idCodFisUp" required>
+                    <span class="focus-input100" data-placeholder="Codice Fiscale"></span>
+                </div>
+
+                <div class="wrap-input100 validate-input m-t-85 m-b-35" hidden id="RuoloUp">
+                    <span class="focus-input100" data-placeholder="Ruolo"></span>
+                    <br>
+                    <br>
+                    <select id="ListaRuoliUP" name="Ruolo">
+                        <option value="" selected disabled>Scegli Ruolo</option>
+                        <option value="Master" >Master</option>
+                        <option value="Amministratore" >Amministratore</option>
+                        <option value="Operatore" >Operatore</option>
+                        <option value="Leader" >Leader</option>
+                        <option value="Utente Semplice" >Utente Semplice</option>
+                        <option value="Utente Pro" >Utente Pro</option>
+                    </select>
+                </div>
+
+                <div id="SezScadeUp" class="wrap-input100 validate-input m-t-85 m-b-35" hidden>
+                    <input type="checkbox" id="ScadeUP" name="Scade" checked>
+                    <label for="Scade">Validità 30 giorni</label>
+                </div>
+
+                <div id="divbtn" class="container-login100-form-btn" >
+                    <input type="button" id="btnUpdate" class="login100-form-btn" onclick="submit_form_Update_Utente()" hidden value = "Aggiorna Ruolo Utente" />
+                </div>
+            </div>
+
+            <div id="riattivaUtente" hidden>
+                <span class="title">Riattiva Utente</span>
+                <div class="wrap-input100 validate-input m-t-85 m-b-35">
+                    <input class="input100" type="text" name="Codice Fiscale" id="idCodFisRiattiva" required>
+                    <span class="focus-input100" data-placeholder="Codice Fiscale"></span>
+                </div>
+
+                <div id="SezScadeR" class="wrap-input100 validate-input m-t-85 m-b-35" hidden>
+                    <input type="checkbox" id="ScadeR" name="ScadeR" checked>
+                    <label for="ScadeR">Validità 30 giorni</label>
+                </div>
+
+                <div id="divbtn" class="container-login100-form-btn" >
+                    <input type="button" id="btnUpdateRiattiva" class="login100-form-btn" onclick="submit_form_Riatt_Utente()" hidden value = "Riattiva Utente" />
+                </div>
+            </div>
+
+            <div id="disattivaUtente" hidden>
+                <span class="title">Disattiva Utente</span>
+                <div class="wrap-input100 validate-input m-t-85 m-b-35">
+                    <input class="input100" type="text" name="Codice Fiscale" id="idCodFisDisattiva" required>
+                    <span class="focus-input100" data-placeholder="Codice Fiscale"></span>
+                </div>
+                  <div id="divbtn" class="container-login100-form-btn" >
+                    <input type="button" id="btnUpdateDisattiva" class="login100-form-btn" onclick="submit_form_Disattiva_Utente()" hidden value = "Disattiva Utente" />
+                </div>
+            </div>
+        </div>
+     </div>
+</div>
+
+
+<div id="dropDownSelect1"></div>
+
+<!--===============================================================================================-->
+<!--librerie jquery -->
+<script src="../../static/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--  <script src="vendor/jquery/jquery-1.4.2.min.js"></script> -->
+<!--===============================================================================================-->
+<script src="../../static/vendor/redirect/jquery.redirect.js"></script>
+<!--===============================================================================================-->
+<script src="../../static/vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+<script src="../../static/vendor/bootstrap/js/popper.js"></script>
+<script src="../../static/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+<script src="../../static/vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+<script src="../../static/vendor/daterangepicker/moment.min.js"></script>
+<script src="../../static/vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+<script src="../../static/vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+
+<!-- qui sono descritti tutti gli eventi che può vedere l'utente -->
+<script src="../../static/js/Utente/OperationUtente.js"></script>
+
+</body>
+</html>

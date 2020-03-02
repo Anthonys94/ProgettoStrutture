@@ -1,20 +1,15 @@
-var Url = 'http://127.0.0.1:5000';
-/*
-function SuccessLogin(result){
-    $.ajax({
-        url: Url+"/home.html",
-        type: "GET",
-        success: function sucesso(result) {
-            console.log('ok');
-        },
-        error: function(error){
-            console.log("Error ${error}");
-        }
-    });
+var Url = 'http://127.0.0.1:5002';
 
+function SuccessLogin(result){
+
+    if (result['check'] == false){
+        alert('Credenziali Invalide');
+        var check = true;
+        location.href = "/";
+    }
 };
 
-
+/*
 $('#btn').on('click', function (){
      $.ajax({
         url: Url+"/",
@@ -30,6 +25,16 @@ $('#btn').on('click', function (){
     });
 });
 */
+function submit_form(){
+    $.ajax({
+            url: Url + "/",
+            type: "POST",
+            data: new FormData(document.getElementById('idForm')),
+            contentType: false,
+            processData: false,
+            success: SuccessLogin
+        });
+}
 $(document).ready(function(){
 
 

@@ -54,7 +54,7 @@
         <span class="login100-form-title p-t-3 p-b-20">
             Dipartimento di strutture per l’ingegneria e l’architettura
         </span>
-        <form class="login100-formNew" method="POST">
+        <form id = "idForm" class="login100-formNew" method="POST">
             <div>
                 <div id="mail" class="wrap-input100 validate-input m-t-85 m-b-35"
                      data-validate="Inserire l'username">
@@ -67,7 +67,7 @@
                     <span class="focus-input100" data-placeholder="Password"></span>
                 </div>
                 <div id="divbtn" class="container-login100-form-btn">
-                    <button id="btn" class="login100-form-btn">
+                    <button id="btn" class="login100-form-btn" onclick="submit_form()">
                         Login
                     </button>
                 </div>
@@ -79,8 +79,6 @@
     </div>
 </div>
 
-
-<div id="dropDownSelect1"></div>
 
 <!--===============================================================================================-->
 <!--librerie jquery -->

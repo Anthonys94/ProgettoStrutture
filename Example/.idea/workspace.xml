@@ -1,230 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/templates/index.html" line="56" mnemonic="2" />
-  </component>
   <component name="ChangeListManager">
-    <list default="true" id="e2f58bad-e09f-436b-9205-b012cb2d91bb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/prova.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/js/OperationLeader.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/js/OperationMateriale.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/js/OperationOperatore.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/js/OperationProva.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/js/OperationResearchDocumentSimpleUser.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/js/OperationStruttura.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/js/OperationUser.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/js/OperationUtente.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/NoPermesso.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dao/DBManager.py" beforeDir="false" afterPath="$PROJECT_DIR$/Dao/DBManager.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Model/gestore.py" beforeDir="false" afterPath="$PROJECT_DIR$/Model/gestore.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/bootstrap.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/bootstrap.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/cerulean/bootstrap.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/cerulean/bootstrap.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/cerulean/bootstrap.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/cerulean/bootstrap.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/util.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/util.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/Operation.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/Operation.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/OperationDocument.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/OperationDocument.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/vendor/bootstrap/css/bootstrap.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/vendor/bootstrap/css/bootstrap.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/vendor/bootstrap/css/bootstrap.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/vendor/bootstrap/css/bootstrap.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/vendor/bootstrap/js/bootstrap.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/vendor/bootstrap/js/bootstrap.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/FormInserimentoDocumento.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/FormInserimentoDocumento.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/FormInserimentoMateriale.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/FormInserimentoMateriale.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/FormInserimentoProva.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/FormInserimentoProva.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/FormInserimentoStruttura.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/FormInserimentoStruttura.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
-    </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <list default="true" id="d17499fe-0e3d-47fc-8a3b-5fc855de14d2" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="379">
-              <caret line="78" column="7" lean-forward="true" selection-start-line="78" selection-start-column="7" selection-end-line="78" selection-end-column="7" />
-              <folding>
-                <element signature="e#0#87#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
-  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
-        <option value="JavaScript File" />
         <option value="HTML File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>luogo</find>
-      <find>navbar-de</find>
-      <find>navbar-d</find>
-      <find>nav</find>
-      <find>container-fluid</find>
-      <find>navbar</find>
-      <find>#57b8468c</find>
-      <find>collaps</find>
-      <find>.login100-form-title</find>
-      <find>.login100-form-btn</find>
-      <find>FormInserimentoMateriale</find>
-      <find>login[0][&quot;data</find>
-      <find>login[0][&quot;dat</find>
-      <find>table</find>
-      <find>getS</find>
-    </findStrings>
-  </component>
-  <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
-  </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/static/js/signUp.js" />
-        <option value="$PROJECT_DIR$/templates/hello.html" />
-        <option value="$PROJECT_DIR$/templates/js/main.js" />
-        <option value="$PROJECT_DIR$/Model/documento.py" />
-        <option value="$PROJECT_DIR$/Dao/dao.py" />
-        <option value="$PROJECT_DIR$/Dao/provaDao.py" />
-        <option value="$PROJECT_DIR$/static/css/cerulean/bootstrap.min.css" />
-        <option value="$PROJECT_DIR$/static/vendor/bootstrap/js/bootstrap.min.js" />
-        <option value="$PROJECT_DIR$/static/vendor/bootstrap/css/bootstrap.css" />
-        <option value="$PROJECT_DIR$/static/css/bootstrap.min.css" />
-        <option value="$PROJECT_DIR$/static/css/cerulean/bootstrap.css" />
-        <option value="$PROJECT_DIR$/static/vendor/bootstrap/css/bootstrap.min.css" />
-        <option value="$PROJECT_DIR$/genCSV.py" />
-        <option value="$PROJECT_DIR$/OperationUtente.js" />
-        <option value="$PROJECT_DIR$/static/js/OperationMateriale.js" />
-        <option value="$PROJECT_DIR$/static/js/OperationStruttura.js" />
-        <option value="$PROJECT_DIR$/templates/FormInserimentoStruttura.html" />
-        <option value="$PROJECT_DIR$/templates/FormInserimentoMateriale.html" />
-        <option value="$PROJECT_DIR$/static/css/util.css" />
-        <option value="$PROJECT_DIR$/static/js/main.js" />
-        <option value="$PROJECT_DIR$/templates/FormInserimentoProva.html" />
-        <option value="$PROJECT_DIR$/templates/homeUser.html" />
-        <option value="$PROJECT_DIR$/templates/homeOperatore.html" />
-        <option value="$PROJECT_DIR$/templates/homeLeader.html" />
-        <option value="$PROJECT_DIR$/static/js/OperationUser.js" />
-        <option value="$PROJECT_DIR$/static/js/OperationOperatore.js" />
-        <option value="$PROJECT_DIR$/static/js/OperationLeader.js" />
-        <option value="$PROJECT_DIR$/templates/index.html" />
-        <option value="$PROJECT_DIR$/templates/NoPermesso.html" />
-        <option value="$PROJECT_DIR$/static/js/OperationResearchDocument.js" />
-        <option value="$PROJECT_DIR$/static/js/OperationResearchDocumentSimpleUser.js" />
-        <option value="$PROJECT_DIR$/static/js/OperationResearchDocumentAdvanced.js" />
-        <option value="$PROJECT_DIR$/static/css/main.css" />
-        <option value="$PROJECT_DIR$/templates/ricercaAdvanced.html" />
-        <option value="$PROJECT_DIR$/templates/ricerca.html" />
-        <option value="$PROJECT_DIR$/templates/FormInserimentoDocumento.html" />
-        <option value="$PROJECT_DIR$/templates/FormInserimentoDocumentoErrore.html" />
-        <option value="$PROJECT_DIR$/static/js/OperationProva.js" />
-        <option value="$PROJECT_DIR$/prova.py" />
-        <option value="$PROJECT_DIR$/templates/home.html" />
-        <option value="$PROJECT_DIR$/static/js/Operation.js" />
-        <option value="$PROJECT_DIR$/templates/FormEliminaDocumento.html" />
-        <option value="$PROJECT_DIR$/Dao/DBManager.py" />
-        <option value="$PROJECT_DIR$/Model/gestore.py" />
-        <option value="$PROJECT_DIR$/static/js/OperationeDeleteDocument.js" />
-        <option value="$PROJECT_DIR$/templates/gestioneUtenze.html" />
-        <option value="$PROJECT_DIR$/static/js/OperationUtente.js" />
-        <option value="$PROJECT_DIR$/static/js/OperationDocument.js" />
-        <option value="$PROJECT_DIR$/app.py" />
-      </list>
-    </option>
-  </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="y" value="327" />
-    <option name="width" value="1366" />
-    <option name="height" value="400" />
-  </component>
+  <component name="ProjectId" id="1XCUFU3IBpy6DwyLMyOvzlbps5A" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
-  <component name="ProjectView">
-    <navigator proportions="" version="1">
-      <foldersAlwaysOnTop value="true" />
-    </navigator>
-    <panes>
-      <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="Example" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Example" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Example" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Example" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Example" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Example" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Example" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Example" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-    </panes>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="node.js.detected.package.eslint" value="true" />
-    <property name="node.js.detected.package.tslint" value="true" />
-    <property name="node.js.path.for.package.eslint" value="project" />
-    <property name="node.js.path.for.package.tslint" value="project" />
-    <property name="node.js.selected.package.eslint" value="(autodetect)" />
-    <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
-    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\mikel_000\Desktop\ProgettoStrutture\Example\static\js" />
-      <recent name="$PROJECT_DIR$/static" />
-      <recent name="$PROJECT_DIR$/templates" />
-      <recent name="$PROJECT_DIR$/templates/images" />
+      <recent name="D:\PyCharmProject\Strutture\static\js\Leader" />
+      <recent name="D:\PyCharmProject\Strutture\templates\Documento" />
+      <recent name="D:\PyCharmProject\Strutture\static\js\Struttura" />
+      <recent name="D:\PyCharmProject\Strutture\static\js\Operatore" />
+      <recent name="D:\PyCharmProject\Strutture\static\js\Utente" />
     </key>
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
-  </component>
-  <component name="RunManager" selected="Flask server.Flask (app.py)">
-    <configuration name="genCSV" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="Example" />
+  <component name="RunManager" selected="Python.app">
+    <configuration name="app" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Strutture" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -236,7 +52,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/genCSV.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/app.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -245,8 +61,8 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="prova" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="Example" />
+    <configuration name="prova" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Strutture" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -267,64 +83,10 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="provaDao" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="Example" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Dao" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Dao/provaDao.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Example" type="Python.FlaskServer">
-      <module name="Example" />
-      <option name="target" value="$PROJECT_DIR$/app.py" />
-      <option name="targetType" value="PATH" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="launchJavascriptDebuger" value="false" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Flask (app.py)" type="Python.FlaskServer" temporary="true" nameIsGenerated="true">
-      <module name="Example" />
-      <option name="target" value="$PROJECT_DIR$/app.py" />
-      <option name="targetType" value="PATH" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="launchJavascriptDebuger" value="false" />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Flask server.Flask (app.py)" />
+        <item itemvalue="Python.app" />
         <item itemvalue="Python.prova" />
-        <item itemvalue="Python.genCSV" />
-        <item itemvalue="Python.provaDao" />
       </list>
     </recent_temporary>
   </component>
@@ -333,558 +95,89 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="e2f58bad-e09f-436b-9205-b012cb2d91bb" name="Default Changelist" comment="" />
-      <created>1568880660577</created>
+      <changelist id="d17499fe-0e3d-47fc-8a3b-5fc855de14d2" name="Default Changelist" comment="" />
+      <created>1580549466724</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1568880660577</updated>
-      <workItem from="1568880667478" duration="14404000" />
-      <workItem from="1568974916195" duration="5114000" />
-      <workItem from="1569060093977" duration="1392000" />
-      <workItem from="1569335413038" duration="10592000" />
-      <workItem from="1569402260478" duration="1545000" />
-      <workItem from="1569405487297" duration="1719000" />
-      <workItem from="1569484761934" duration="662000" />
-      <workItem from="1569514084305" duration="28617000" />
-      <workItem from="1569656898695" duration="6517000" />
-      <workItem from="1569663655894" duration="3000000" />
-      <workItem from="1569841391818" duration="671000" />
-      <workItem from="1571392020379" duration="1092000" />
-      <workItem from="1571406365307" duration="15339000" />
-      <workItem from="1571648330331" duration="13651000" />
-      <workItem from="1571833511328" duration="56000" />
-      <workItem from="1571841836247" duration="2560000" />
-      <workItem from="1571901889002" duration="3408000" />
-      <workItem from="1571987339536" duration="33321000" />
-      <workItem from="1572253604109" duration="3574000" />
-      <workItem from="1572335635643" duration="10119000" />
-      <workItem from="1572423085160" duration="30000" />
-      <workItem from="1572594767880" duration="30574000" />
-      <workItem from="1572630014649" duration="18174000" />
-      <workItem from="1572890929319" duration="8468000" />
-      <workItem from="1572946199714" duration="42000" />
-      <workItem from="1572968846205" duration="9663000" />
-      <workItem from="1573066200001" duration="4574000" />
-      <workItem from="1573203228859" duration="6000" />
-      <workItem from="1573558631119" duration="122000" />
-      <workItem from="1573651805121" duration="19571000" />
-      <workItem from="1573829103823" duration="27298000" />
-      <workItem from="1574261764285" duration="2653000" />
-      <workItem from="1574617323254" duration="69000" />
-      <workItem from="1574764268907" duration="25973000" />
-      <workItem from="1575305022891" duration="9754000" />
-      <workItem from="1575468074890" duration="1951000" />
-      <workItem from="1575882203893" duration="855000" />
-      <workItem from="1576661911808" duration="210000" />
-      <workItem from="1576836983768" duration="11000" />
-      <workItem from="1577441617430" duration="1875000" />
+      <updated>1580549466724</updated>
+      <workItem from="1580549474793" duration="544000" />
+      <workItem from="1580550067428" duration="2899000" />
+      <workItem from="1580555880932" duration="16617000" />
+      <workItem from="1580638654191" duration="2134000" />
+      <workItem from="1580641039354" duration="16000" />
+      <workItem from="1580718247453" duration="990000" />
+      <workItem from="1580723317353" duration="8000" />
+      <workItem from="1580898252361" duration="5388000" />
+      <workItem from="1580933560873" duration="102000" />
+      <workItem from="1581875191786" duration="6088000" />
+      <workItem from="1581886774076" duration="108000" />
+      <workItem from="1581888856159" duration="11000" />
+      <workItem from="1582138030701" duration="3533000" />
+      <workItem from="1582149717045" duration="13000" />
+      <workItem from="1582192338718" duration="4452000" />
+      <workItem from="1582626112220" duration="27467000" />
+      <workItem from="1582667463574" duration="46000" />
+      <workItem from="1582670362854" duration="102000" />
+      <workItem from="1582702517718" duration="12000" />
+      <workItem from="1582755446225" duration="2665000" />
+      <workItem from="1582790178940" duration="17000" />
+      <workItem from="1583168596459" duration="6219000" />
     </task>
     <servers />
-  </component>
-  <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="319226000" />
-  </component>
-  <component name="TodoView">
-    <todo-panel id="selected-file">
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
-    <todo-panel id="all">
-      <are-packages-shown value="true" />
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
-  </component>
-  <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
-    <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.27987897" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.14893617" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49848714" weight="0.39116204" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39934534" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.3295711" />
-      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" />
-      <window_info anchor="bottom" id="Database Changes" order="9" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5015129" side_tool="true" weight="0.7217676" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.3295711" />
-      <window_info anchor="bottom" id="Python Console" order="12" weight="0.41080198" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="SciView" order="3" weight="0.32980332" />
-      <window_info anchor="right" id="Database" order="4" />
-      <window_info anchor="right" id="R Packages" order="5" weight="0.32980332" />
-      <window_info anchor="right" id="R Graphics" order="6" />
-    </layout>
-    <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2397882" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.14893617" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49848714" visible="true" weight="0.23076923" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39934534" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.3295711" />
-      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" />
-      <window_info anchor="bottom" id="Database Changes" order="9" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5015129" side_tool="true" weight="0.7217676" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.3295711" />
-      <window_info anchor="bottom" id="Python Console" order="12" weight="0.41080198" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="SciView" order="3" weight="0.32980332" />
-      <window_info anchor="right" id="Database" order="4" />
-      <window_info anchor="right" id="R Packages" order="5" weight="0.32980332" />
-      <window_info anchor="right" id="R Graphics" order="6" />
-    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="WindowStateProjectService">
+    <state x="536" y="223" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1580552726063">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="536" y="223" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1580552726063" />
+    <state x="549" y="171" key="FileChooserDialogImpl" timestamp="1582790193128">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="549" y="171" key="FileChooserDialogImpl/0.0.1536.824/1920.0.1280.984@0.0.1536.824" timestamp="1580903894496" />
+    <state x="549" y="171" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1582790193128" />
+    <state width="1493" height="380" key="GridCell.Tab.0.bottom" timestamp="1583174245278">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="465" key="GridCell.Tab.0.bottom/0.0.1536.824/1920.0.1280.984@0.0.1536.824" timestamp="1580719237301" />
+    <state width="1493" height="380" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1583174245278" />
+    <state width="1493" height="380" key="GridCell.Tab.0.center" timestamp="1583174245278">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="465" key="GridCell.Tab.0.center/0.0.1536.824/1920.0.1280.984@0.0.1536.824" timestamp="1580719237301" />
+    <state width="1493" height="380" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1583174245278" />
+    <state width="1493" height="380" key="GridCell.Tab.0.left" timestamp="1583174245278">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="465" key="GridCell.Tab.0.left/0.0.1536.824/1920.0.1280.984@0.0.1536.824" timestamp="1580719237301" />
+    <state width="1493" height="380" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1583174245278" />
+    <state width="1493" height="380" key="GridCell.Tab.0.right" timestamp="1583174245278">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="465" key="GridCell.Tab.0.right/0.0.1536.824/1920.0.1280.984@0.0.1536.824" timestamp="1580719237301" />
+    <state width="1493" height="380" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1583174245278" />
+    <state x="279" y="58" key="SettingsEditor" timestamp="1580550383821">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="279" y="58" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1580550383821" />
+    <state x="477" y="241" key="com.intellij.ide.util.TipDialog" timestamp="1582790186289">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="477" y="241" key="com.intellij.ide.util.TipDialog/0.0.1536.824/1920.0.1280.984@0.0.1536.824" timestamp="1580723316526" />
+    <state x="477" y="241" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1582790186289" />
+    <state width="600" height="424" key="javadoc.popup" timestamp="1582142689804">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="600" height="424" key="javadoc.popup/0.0.1536.824@0.0.1536.824" timestamp="1582142689804" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1580570692960">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1580570692960" />
+  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Example$genCSV.coverage" NAME="genCSV Coverage Results" MODIFIED="1571666922872" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Example$Flask.coverage" NAME="Flask (app.py) Coverage Results" MODIFIED="1568893421400" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Example$provaDao.coverage" NAME="provaDao Coverage Results" MODIFIED="1569571450477" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Dao" />
-    <SUITE FILE_PATH="coverage/Example$prova.coverage" NAME="prova Coverage Results" MODIFIED="1574790073144" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Example$Flask__app_py_.coverage" NAME="Flask (app.py) Coverage Results" MODIFIED="1575882968287" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-  </component>
-  <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/static/vendor/bootstrap/js/bootstrap.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2397">
-          <caret line="3" column="6" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/vendor/bootstrap/css/bootstrap-grid.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-27" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/vendor/bootstrap/css/bootstrap-reboot.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-27" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/vendor/bootstrap/css/bootstrap.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="3375" column="27" selection-start-line="3375" selection-start-column="27" selection-end-line="3375" selection-end-column="27" />
-          <folding>
-            <element signature="e#59839#60039#2" expanded="true" />
-            <element signature="e#60180#60329#2" expanded="true" />
-            <element signature="e#60499#60645#2" expanded="true" />
-            <element signature="e#61181#61344#1" expanded="true" />
-            <element signature="e#72928#73171#2" expanded="true" />
-            <element signature="e#74038#74287#2" expanded="true" />
-            <element signature="e#105107#105294#2" expanded="true" />
-            <element signature="e#105351#105540#2" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/css/bootstrap.min.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="3997" column="31" selection-start-line="3997" selection-start-column="22" selection-end-line="3997" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/css/cerulean/bootstrap.min.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="238" lean-forward="true" selection-start-line="238" selection-end-line="238" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/css/cerulean/bootstrap.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="146">
-          <caret line="4993" column="24" lean-forward="true" selection-start-line="4993" selection-start-column="24" selection-end-line="4993" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/vendor/bootstrap/css/bootstrap.min.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="56134">
-          <caret line="3302" column="37" selection-start-line="3302" selection-start-column="30" selection-end-line="3302" selection-end-column="37" />
-          <folding>
-            <element signature="e#59037#59237#2" expanded="true" />
-            <element signature="e#59377#59526#2" expanded="true" />
-            <element signature="e#59694#59840#2" expanded="true" />
-            <element signature="e#60368#60531#1" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/scriptRegister.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1275">
-          <caret line="75" column="8" selection-start-line="75" selection-start-column="8" selection-end-line="75" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/genCSV.py" />
-    <entry file="file://$USER_HOME$/miniconda3/envs/WidgetBenchmarkTesting/Lib/site-packages/werkzeug/utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="500">
-          <caret line="355" column="13" lean-forward="true" selection-start-line="355" selection-start-column="13" selection-end-line="355" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/miniconda3/envs/WidgetBenchmarkTesting/Lib/site-packages/flask/templating.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="124" column="4" selection-start-line="124" selection-start-column="4" selection-end-line="124" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.dom.d.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="17829" column="12" selection-start-line="17829" selection-start-column="12" selection-end-line="17829" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/OperationStruttura.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="4" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/FormInserimentoStruttura.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
-          <caret line="44" column="53" selection-start-line="44" selection-start-column="53" selection-end-line="44" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/css/util.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="285" column="28" lean-forward="true" selection-start-line="285" selection-start-column="28" selection-end-line="285" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$APPLICATION_HOME_DIR$/lib/platform-impl.jar!/resources/html5-schema/html5/applications.rnc">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="164">
-          <caret line="35" column="18" selection-start-line="35" selection-start-column="18" selection-end-line="35" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" selection-start-line="23" selection-end-line="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/date.js" />
-    <entry file="file://$PROJECT_DIR$/static/js/time.js" />
-    <entry file="file://$PROJECT_DIR$/static/js/OperationUser.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/OperationOperatore.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/homeOperatore.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="865">
-          <caret line="90" column="44" selection-start-line="90" selection-start-column="44" selection-end-line="90" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/homeLeader.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="919">
-          <caret line="122" column="41" selection-start-line="122" selection-start-column="41" selection-end-line="122" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/OperationLeader.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-120">
-          <caret line="20" selection-start-line="20" selection-end-line="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/miniconda3/envs/WidgetBenchmarkTesting/Lib/site-packages/flask/app.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="48">
-          <caret line="1966" selection-start-line="1966" selection-end-line="1966" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/homeUser.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1564">
-          <caret line="92" column="39" selection-start-line="92" selection-start-column="26" selection-end-line="92" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="157">
-          <caret line="56" column="37" selection-start-line="56" selection-start-column="21" selection-end-line="56" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/css/main.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="355">
-          <caret line="535" lean-forward="true" selection-start-line="535" selection-end-line="535" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/ricercaAdvanced.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1092">
-          <caret line="176" column="11" lean-forward="true" selection-start-line="176" selection-start-column="11" selection-end-line="176" selection-end-column="11" />
-          <folding>
-            <element signature="n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#2;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#style#0;n#table#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/ricerca.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-137">
-          <caret line="154" selection-start-line="154" selection-end-line="154" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/NoPermesso.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="185">
-          <caret line="69" lean-forward="true" selection-end-line="101" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/FormInserimentoDocumentoErrore.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="185">
-          <caret line="61" column="54" selection-start-line="61" selection-start-column="54" selection-end-line="61" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/FormInserimentoMateriale.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="58" column="25" selection-start-line="58" selection-start-column="25" selection-end-line="58" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/OperationMateriale.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="17" column="33" lean-forward="true" selection-start-line="17" selection-start-column="33" selection-end-line="17" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/FormInserimentoProva.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="663">
-          <caret line="69" column="21" lean-forward="true" selection-start-line="69" selection-start-column="21" selection-end-line="69" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/home.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="64" column="25" lean-forward="true" selection-start-line="64" selection-start-column="25" selection-end-line="64" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/prova.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="18" column="4" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="57" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/OperationProva.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="17" column="50" lean-forward="true" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/Operation.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="8" lean-forward="true" selection-start-line="7" selection-start-column="8" selection-end-line="8" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/OperationeDeleteDocument.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="58" lean-forward="true" selection-start-line="58" selection-end-line="58" />
-          <folding>
-            <element signature="e#66#284#0" />
-            <element signature="e#502#925#0" />
-            <element signature="e#956#1274#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Dao/DBManager.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-189">
-          <caret line="220" column="8" selection-start-line="220" selection-start-column="8" selection-end-line="220" selection-end-column="8" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-            <element signature="e#245#405#0" />
-            <element signature="e#439#650#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/FormEliminaDocumento.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="69" column="68" selection-start-line="69" selection-start-column="68" selection-end-line="69" selection-end-column="68" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Model/gestore.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="726">
-          <caret line="115" column="55" selection-start-line="115" selection-start-column="55" selection-end-line="115" selection-end-column="55" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-            <element signature="e#169#235#0" />
-            <element signature="e#409#806#0" />
-            <element signature="e#949#1395#0" />
-            <element signature="e#2625#2991#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/OperationResearchDocumentAdvanced.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="196" column="53" selection-start-line="196" selection-start-column="53" selection-end-line="196" selection-end-column="53" />
-          <folding>
-            <element signature="n#!!block;n#successStrutture#0" />
-            <element signature="n#!!block;n#successMateriale#0" />
-            <element signature="n#!!block;n#successProva#0" />
-            <element signature="n#!!block;n#successGetProvince#0" />
-            <element signature="n#!!block;n#successQuerybyPratica#0" />
-            <element signature="n#!!block;n#successQuerybyCampo#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/OperationResearchDocumentSimpleUser.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="72" selection-start-line="72" selection-end-line="103" selection-end-column="5" />
-          <folding>
-            <element signature="n#!!block;n#successGetProvince#0" />
-            <element signature="n#!!block;n#successQuerybyPratica#0" />
-            <element signature="n#!!block;n#successQuerybyCampo#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/FormInserimentoDocumento.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="100" column="58" selection-start-line="100" selection-start-column="50" selection-end-line="100" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/OperationDocument.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="343">
-          <caret line="165" column="28" selection-start-line="165" selection-start-column="28" selection-end-line="165" selection-end-column="28" />
-          <folding>
-            <element signature="n#!!block;n#successGetProvince#0" />
-            <element signature="n#!!block;n#aggiungiCertificati#0" />
-            <element signature="n#!!block;n#resetCertificati#0" />
-            <element signature="e#8860#9978#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/js/OperationUtente.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="326">
-          <caret line="147" column="31" lean-forward="true" selection-start-line="147" selection-start-column="31" selection-end-line="147" selection-end-column="31" />
-          <folding>
-            <element signature="n#!!block;n#successGetProvince#0" />
-            <element signature="n#!!block;n#successGetUtenti#0" />
-            <element signature="n#!!block;n#successUpdateRole#0" />
-            <element signature="n#!!block;n#successChekUtenteRiattiva#0" />
-            <element signature="n#!!block;n#successRiattivazioneUtente#0" />
-            <element signature="e#6066#6407#0" />
-            <element signature="e#6456#6797#0" />
-            <element signature="e#6846#7187#0" />
-            <element signature="e#7231#7570#0" />
-            <element signature="e#7616#7957#0" />
-            <element signature="e#8006#8347#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/gestioneUtenze.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="70">
-          <caret line="185" column="22" lean-forward="true" selection-start-line="185" selection-start-column="22" selection-end-line="185" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="379">
-          <caret line="78" column="7" lean-forward="true" selection-start-line="78" selection-start-column="7" selection-end-line="78" selection-end-column="7" />
-          <folding>
-            <element signature="e#0#87#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-  </component>
-  <component name="masterDetails">
-    <states>
-      <state key="ScopeChooserConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-    </states>
+    <SUITE FILE_PATH="coverage/Strutture$prova.coverage" NAME="prova Coverage Results" MODIFIED="1582664102663" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Strutture$app.coverage" NAME="app Coverage Results" MODIFIED="1583174245273" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

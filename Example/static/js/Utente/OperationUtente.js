@@ -63,9 +63,12 @@ function submit_form_Update_Utente() {
 
 function successUpdateRole(result) {
     if (result['check'] == true) {
-        document.getElementById("UpdateDiv").hidden = true;
-        alert("Utente Aggiornato");
 
+        alert("Utente Aggiornato");
+        var check = true;
+        location.href = "GestioneUtente.html";
+        /*
+        document.getElementById("UpdateDiv").hidden = true;
         table = document.getElementById("TableAttivi")
         righe = table.getElementsByTagName("tr");
 
@@ -84,47 +87,11 @@ function successUpdateRole(result) {
         document.getElementById("bntAnnulla").hidden = true;
         document.getElementById("idCodFisUp").value = "";
         document.getElementById("SezScadeUp").hidden = true;
+
+         */
     } else {
         alert("Errore durante l'aggiornamento ")
     }
-
-}
-
-// NEW UTENTE
-var typingTimer;
-var doneTypingInterval = 3000;  //time in ms
-$('#idCodFis').on('keyup', function () {
-    clearTimeout(typingTimer);
-    typingTimer = setTimeout(doneTyping, doneTypingInterval);
-});
-
-$('#idCodFis').on('keydown', function () {
-    clearTimeout(typingTimer);
-    document.getElementById('btnUpload').hidden = true;
-});
-
-function doneTyping() {
-    if (document.getElementById('idCodFis').value != "") {
-        $.ajax({
-            url: Url + "/check_esistenza_utente",
-            type: "GET",
-            data: {
-                CF: document.getElementById('idCodFis').value
-            },
-            success: function (result) {
-                if (result['esito'] == true) {
-                    alert('Utente esistente');
-                } else {
-                    document.getElementById('btnUpload').hidden = false;
-                }
-            },
-            error: function (error) {
-                console.log("Error ${error}");
-            }
-        });
-
-    }
-
 
 }
 
@@ -142,32 +109,49 @@ function submit_form_add_Utente() {
     }
 
     if (enableUpload) {
-        var date = new Date(document.getElementById('DataDiNascita').value);
-        currentDate = new Date();
-        if (currentDate < date) {
-            alert('Formato di data errato');
-        } else {
-            $.ajax({
-                type: 'POST',
-                url: Url + '/NewUtente',
-                data: {
-                    Nome: document.getElementById("idNome").value,
-                    Cognome: document.getElementById("idCognome").value,
-                    Provincia: document.getElementById("ListaProvince").value,
-                    Comune: document.getElementById("ListaComuni").value,
-                    bday: document.getElementById("DataDiNascita").value,
-                    CodiceFiscale: document.getElementById("idCodFis").value,
-                    Password: document.getElementById("idPassword").value,
-                    Ruolo: document.getElementById("ListaRuoli").value,
-                    Scadenza: document.getElementById('Scade').checked
+        $.ajax({
+            url: Url + "/check_esistenza_utente",
+            type: "GET",
+            data: {
+                CF: document.getElementById('idCodFis').value
+            },
+            success: function (result) {
+                if (result['esito'] == true) {
+                    alert('Utente esistente');
+                } else {
+                    var date = new Date(document.getElementById('DataDiNascita').value);
+                    currentDate = new Date();
+                    if (currentDate < date) {
+                        alert('Formato di data errato');
+                    } else {
+                        $.ajax({
+                            type: 'POST',
+                            url: Url + '/NewUtente',
+                            data: {
+                                Nome: document.getElementById("idNome").value,
+                                Cognome: document.getElementById("idCognome").value,
+                                Provincia: document.getElementById("ListaProvince").value,
+                                Comune: document.getElementById("ListaComuni").value,
+                                bday: document.getElementById("DataDiNascita").value,
+                                CodiceFiscale: document.getElementById("idCodFis").value,
+                                Password: document.getElementById("idPassword").value,
+                                Ruolo: document.getElementById("ListaRuoli").value,
+                                Scadenza: document.getElementById('Scade').checked
 
-                },
-                success: successAggiuntaUtente,
-                error: function (error) {
-                    console.log("Error ${error}");
+                            },
+                            success: successAggiuntaUtente,
+                            error: function (error) {
+                                console.log("Error ${error}");
+                            }
+                        });
+                    }
+
                 }
-            });
-        }
+            },
+            error: function (error) {
+                console.log("Error ${error}");
+            }
+        });
     } else {
         alert('Iserire tutti i campi');
     }
@@ -177,6 +161,7 @@ function successAggiuntaUtente(result) {
     console.log(result)
     if (result['check'] == true) {
         alert('Utente aggiunto');
+        /*
         var table = document.getElementById("TableAttivi");
         var row = table.insertRow(-1);
         var fistCell = row.insertCell(0);
@@ -202,7 +187,9 @@ function successAggiuntaUtente(result) {
         document.getElementById('idCodFis').value = "";
         document.getElementById('Scade').checked = true;
 
-
+         */
+        var check = true;
+        location.href = "GestioneUtente.html";
     } else {
         alert("Errore nella creazione dell'utente");
     }
@@ -264,12 +251,15 @@ function submit_form_Riatt_Utente() {
 function successRiattivazioneUtente(result) {
     if (result['check'] == true) {
         alert("Utente Riattivato");
+        var check = true;
+        location.href = "GestioneUtente.html";
+        /*
         var ruolo;
         table = document.getElementById("TableNonAttivi")
         righe = table.getElementsByTagName("tr");
         for (index = 1; index < righe.length; index++) {
             valore = righe[index].getElementsByTagName("td")[0]; //prendo il codice fiscale
-            if (valore.innerText == document.getElementById('idCodFisRiattiva').value) {
+            if (valore.innerText.toUpperCase() == document.getElementById('idCodFisRiattiva').value) {
                 ruolo = righe[index].getElementsByTagName("td")[1];
                 table.deleteRow(index);
             }
@@ -281,7 +271,7 @@ function successRiattivazioneUtente(result) {
         var secondCell = row.insertCell(1);
         var thirdcell = row.insertCell(2);
         var fourcell = row.insertCell(3);
-        fistCell.append(document.createTextNode(document.getElementById('idCodFisRiattiva').value));
+        fistCell.append(document.createTextNode(document.getElementById('idCodFisRiattiva').value.toUpperCase()));
         secondCell.append(document.createTextNode(ruolo.innerText));
         thirdcell.append(document.createTextNode(today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate()));
         fourcell.append(document.createTextNode(document.getElementById('ScadeR').checked));
@@ -292,9 +282,13 @@ function successRiattivazioneUtente(result) {
         document.getElementById("btnUpdateRiattiva").hidden = true;
         document.getElementById('SezScadeR').hidden = true;
         document.getElementById("bntAnnulla").hidden = true;
+        */
+
     } else {
         alert("Errore nella riattivazione dell'utente");
     }
+
+
 
 
 }
@@ -356,6 +350,9 @@ function submit_form_Disattiva_Utente() {
 function successDisattivaUtente(result) {
     if (result['check'] == true) {
         alert('Utente disattivato');
+        var check = true;
+        location.href = "GestioneUtente.html";
+        /*
         var ruolo;
         var data;
         table = document.getElementById("TableAttivi")
@@ -384,6 +381,7 @@ function successDisattivaUtente(result) {
         document.getElementById('disattivaUtente').hidden = true;
         document.getElementById("bntAnnulla").hidden = true;
 
+         */
     } else {
         alert("Errore nella disattivazione dell'utente")
     }

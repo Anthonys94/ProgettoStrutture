@@ -7,7 +7,6 @@
 <head>
     <title>Home</title>
     <meta charset="UTF-8">
-    <!-- operatore inserisce un documento-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--===============================================================================================-->
     <link rel="icon" type="image/png" href="../static/images/icons/favicon.ico"/>
@@ -43,7 +42,14 @@
             <input type="text" id="welcome" readonly class="navbar navbar-text" value="Benvenuto:"> </input>
         </div>
         <ul class="nav navbar-nav">
-            <li class="active"><a href="/logOut">Logout</a></li>
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/Contatti.html">Contatti <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/logOut">Logout</a>
+                </li>
+            </ul>
         </ul>
     </div>
 </nav>
@@ -56,19 +62,44 @@
 						Le operazioni disponibili:
 					</span>
 
+            <!-- button -->
             <div id="divbtn" class="container-login100-form-btn">
-                <button id="addDocument" class="login100-form-btn">
-                    Nuovo Certificato
+                <button id="GestioneDocumenti" class="login100-form-btn">
+                    Gestione Documenti
                 </button>
 
             </div>
+            <br>
+
+            <div id="divbtn" class="container-login100-form-btn">
+                <button id="GestioneMateriali" class="login100-form-btn">
+                    Visualuzza Materiali
+                </button>
+
+            </div>
+            <br>
+
+            <div id="divbtn" class="container-login100-form-btn">
+                <button id="GestioneProve" class="login100-form-btn">
+                    Visualizza Prova
+                </button>
+            </div>
+            <br>
+
+            <div id="divbtn" class="container-login100-form-btn">
+                <button id="GestioneStrutture" class="login100-form-btn">
+                    Visualizza Strutture
+                </button>
+            </div>
+            <br>
+
 
         </div>
     </div>
 </div>
 
 
-<div id="dropDownSelect1"></div>
+
 
 <!--===============================================================================================-->
 <!--librerie jquery -->
@@ -88,7 +119,7 @@
 <!--===============================================================================================-->
 <script src="../static/vendor/countdowntime/countdowntime.js"></script>
 <!--===============================================================================================-->
-<script src="../static/js/OperationOperatore.js"></script>
+<script src="../static/js/Operatore/OperationOperatore.js"></script>
 
 </body>
 </html>

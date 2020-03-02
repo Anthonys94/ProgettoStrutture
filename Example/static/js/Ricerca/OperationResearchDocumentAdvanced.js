@@ -139,7 +139,11 @@ function DownloadFc(x) {
         data: {
             file:file,
         },
+        xhrFields: {
+                responseType: 'blob'
+        },
         success: function (response, status, xhr) {
+
             // check for a filename
             var filename = "";
             var disposition = xhr.getResponseHeader('Content-Disposition');
@@ -155,7 +159,7 @@ function DownloadFc(x) {
             if (typeof window.navigator.msSaveBlob !== 'undefined') {
                 // IE workaround for "HTML7007: One or more blob URLs were revoked by closing the blob for which they were created. These URLs will no longer resolve as the data backing the URL has been freed."
                 window.navigator.msSaveBlob(blob, filename);
-            } else {
+            }else{
                 var URL = window.URL || window.webkitURL;
                 var downloadUrl = URL.createObjectURL(blob);
 

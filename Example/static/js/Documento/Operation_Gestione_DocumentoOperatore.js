@@ -7,7 +7,7 @@
 
   $('#ModificaDocumento').on('click',function(){
     	var check = true;
-        location.href= "ModificaDocumentoOperatore.html";
+        location.href= "ModificaDocumento.html";
     });
 
 

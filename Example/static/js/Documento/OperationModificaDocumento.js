@@ -293,6 +293,7 @@ $('#idModificaDocumento').on('click', function () {
     document.getElementById('idSezModificaCampi').hidden = false;
     document.getElementById('idSezFoglioLavoro').hidden = true;
     document.getElementById('idSezCertificato').hidden = true;
+    document.getElementById('idSezFoglioApertura').hidden = true;
 
     //nascondo tasto btnUpload
     document.getElementById('btnUpload').hidden = true;
@@ -327,6 +328,7 @@ $('#btnAggiungiCertificato').on('click', function () {
     document.getElementById('idSezModificaCampi').hidden = true;
     document.getElementById('idSezFoglioLavoro').hidden = true;
     document.getElementById('idSezCertificato').hidden = false;
+    document.getElementById('idSezFoglioApertura').hidden = true;
 
     //nascondo tasto btnUpload
     document.getElementById('btnUpload').hidden = true;
@@ -475,6 +477,9 @@ $('#idDowload').on('click', function () {
         data: {
             file: document.getElementById('idpdfLavoro').value,
         },
+        xhrFields: {
+                responseType: 'blob'
+        },
         success: function (response, status, xhr) {
             // check for a filename
             var filename = "";
@@ -529,6 +534,9 @@ $('#idDowloadApertura').on('click', function () {
         type: "GET",
         data: {
             file: document.getElementById('idpdfApertura').value,
+        },
+        xhrFields: {
+                responseType: 'blob'
         },
         success: function (response, status, xhr) {
             // check for a filename

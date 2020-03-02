@@ -26,7 +26,7 @@ $('#userHandle').on('click', function () {
 
 $('#Query').on('click', function () {
     var check = true;
-    location.href = "Ricerca_ad.html";
+    location.href = "Ricerca.html";
 });
 
 $('#Report').on('click', function () {

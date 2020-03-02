@@ -1,22 +1,22 @@
 $('#GestioneProve').on('click', function () {
     var check = true;
-    location.href = "GestioneProvaOperatore.html";
+    location.href = "GestioneProva.html";
     window.location.href = url;
 });
 
 $('#GestioneMateriali').on('click', function () {
     var check = true;
-    location.href = "GestioneMaterialiOperatore.html";
+    location.href = "GestioneMateriali.html";
 });
 
 $('#GestioneStrutture').on('click', function () {
     var check = true;
-    location.href = "GestioneStruttureOperatore.html";
+    location.href = "GestioneStrutture.html";
 });
 
 $('#GestioneDocumenti').on('click', function () {
     var check = true;
-    location.href = "GestioneDocumentoOperatore.html";
+    location.href = "GestioneDocumento.html";
 });
 
 $('.input100').each(function(){
