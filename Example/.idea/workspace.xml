@@ -1,11 +1,110 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d17499fe-0e3d-47fc-8a3b-5fc855de14d2" name="Default Changelist" comment="" />
+    <list default="true" id="d17499fe-0e3d-47fc-8a3b-5fc855de14d2" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/Strutture.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Strutture.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/images/Thumbs.db" beforeDir="false" afterPath="$PROJECT_DIR$/static/images/Thumbs.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/images/icons/Thumbs.db" beforeDir="false" afterPath="$PROJECT_DIR$/static/images/icons/Thumbs.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/images/logoUni.png" beforeDir="false" afterPath="$PROJECT_DIR$/static/images/logoUni.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/vendor/bootstrap/css/bootstrap.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/vendor/bootstrap/css/bootstrap.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Contatti.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Contatti.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Documento/EliminazioneDocumento.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Documento/EliminazioneDocumento.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Documento/ErroreInserimento.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Documento/ErroreInserimento.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Documento/FormInserimentoDocumento.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Documento/FormInserimentoDocumento.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Documento/GestioneDocumentiLeader.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Documento/GestioneDocumentiLeader.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Documento/GestioneDocumento.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Documento/GestioneDocumento.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Documento/GestioneDocumentoOperatore.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Documento/GestioneDocumentoOperatore.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Documento/ModificaCampi.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Documento/ModificaCampi.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Documento/ModificaDocumento.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Documento/ModificaDocumento.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Documento/ModificaDocumentoOperatore.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Documento/ModificaDocumentoOperatore.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/FormEliminaDocumento.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/FormEliminaDocumento.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/FormInserimentoDocumento.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/FormInserimentoDocumento.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/FormInserimentoDocumentoErrore.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/FormInserimentoDocumentoErrore.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/FormInserimentoMateriale.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/FormInserimentoMateriale.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/FormInserimentoProva.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/FormInserimentoProva.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/FormInserimentoStruttura.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/FormInserimentoStruttura.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Materiale/EliminaMateriale.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Materiale/EliminaMateriale.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Materiale/FormInserimentoMateriale.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Materiale/FormInserimentoMateriale.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Materiale/GestioneMateriali.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Materiale/GestioneMateriali.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Materiale/GestioneMaterialiOperatore.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Materiale/GestioneMaterialiOperatore.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Materiale/ModificaMateriale.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Materiale/ModificaMateriale.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/NoPermesso.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/NoPermesso.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Prova/EliminaProva.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Prova/EliminaProva.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Prova/FormInserimentoProva.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Prova/FormInserimentoProva.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Prova/GestioneProva.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Prova/GestioneProva.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Prova/GestioneProvaOperatore.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Prova/GestioneProvaOperatore.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Prova/ModificaProva.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Prova/ModificaProva.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Report/Report.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Report/Report.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Ricerca/Ricerca_ad.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Ricerca/Ricerca_ad.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Ricerca/Ricerca_ad_Leader.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Ricerca/Ricerca_ad_Leader.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Ricerca/ricerca.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Ricerca/ricerca.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Struttura/EliminaStruttura.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Struttura/EliminaStruttura.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Struttura/FormInserimentoStruttura.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Struttura/FormInserimentoStruttura.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Struttura/GestioneStrutture.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Struttura/GestioneStrutture.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Struttura/GestioneStruttureOperatore.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Struttura/GestioneStruttureOperatore.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Struttura/ModificaStruttura.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Struttura/ModificaStruttura.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Utente/GestioneUtente.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Utente/GestioneUtente.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/gestioneUtenze.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/gestioneUtenze.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/homeLeader.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/homeLeader.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/homeOperatore.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/homeOperatore.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/homeUser.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/homeUser.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/ricerca.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/ricerca.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/ricercaAdvanced.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/ricercaAdvanced.html" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="241" column="8" selection-start-line="241" selection-start-column="8" selection-end-line="241" selection-end-column="8" />
+              <folding>
+                <element signature="e#0#87#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/css/main.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="222">
+              <caret line="184" lean-forward="true" selection-start-line="184" selection-end-line="184" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/templates/Ricerca/ricerca.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="224">
+              <caret line="51" column="17" selection-start-line="51" selection-start-column="17" selection-end-line="51" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/Report/Report.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="326">
+              <caret line="57" selection-start-line="57" selection-end-line="57" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -15,8 +114,155 @@
       </list>
     </option>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>container-</find>
+      <find>container</find>
+      <find>container</find>
+      <find>login</find>
+      <find>login100-form</find>
+      <find>login100-form-btn</find>
+      <find>login100-formNe</find>
+      <find>coo</find>
+      <find>request.coo</find>
+      <find>request.cookies.get('flag'</find>
+      <find>resp.set_cookie('flag'</find>
+      <find>Scaduto(datetime.datetime.strptime(data, &quot;%Y-%m-%d&quot;).date(), bool(flag)</find>
+      <find>AnnullaTuttoVaiLogIn(username, ruolo, data, flag,</find>
+      <find>Scaduto(login[0][&quot;dataInserimento&quot;].date(), login[0]['flag'],</find>
+      <find>login100-form-tit</find>
+      <find>AnnullaTuttoVaiLogIn(username, ruolo, data, flag, scadenza, scadenza,</find>
+      <find>navbar-</find>
+      <find>login100-form-title</find>
+      <find>wrap-hom</find>
+      <find>bool(</find>
+      <find>flag)</find>
+      <find>scadenza)</find>
+      <find>flag))</find>
+      <find>Scaduto(datetime.datetime.strptime(data, &quot;%Y-%m-%d&quot;).date(), bool(flag), bool(scadenza), bool(scadenza), bool(scadenza))</find>
+      <find>wrap-logi</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>Scaduto(datetime.datetime.strptime(data, &quot;%Y-%m-%d&quot;).date(), bool(flag), bool(scadenza))</replace>
+      <replace>bool(distutils.util.strtobool(</replace>
+      <replace>flag))</replace>
+      <replace>scadenza))</replace>
+      <replace />
+      <replace>AnnullaTuttoVaiLogIn(username, ruolo, data, flag, scadenza,</replace>
+    </replaceStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/static/vendor/bootstrap/css/bootstrap.min.css" />
+        <option value="$PROJECT_DIR$/templates/index.html" />
+        <option value="$PROJECT_DIR$/templates/home.html" />
+        <option value="$PROJECT_DIR$/app.py" />
+        <option value="$PROJECT_DIR$/Model/gestore.py" />
+        <option value="$PROJECT_DIR$/templates/Documento/EliminazioneDocumento.html" />
+        <option value="$PROJECT_DIR$/templates/Documento/ErroreInserimento.html" />
+        <option value="$PROJECT_DIR$/templates/Documento/FormInserimentoDocumento.html" />
+        <option value="$PROJECT_DIR$/templates/Documento/GestioneDocumentiLeader.html" />
+        <option value="$PROJECT_DIR$/templates/Documento/GestioneDocumento.html" />
+        <option value="$PROJECT_DIR$/templates/Documento/GestioneDocumentoOperatore.html" />
+        <option value="$PROJECT_DIR$/templates/Documento/ModificaCampi.html" />
+        <option value="$PROJECT_DIR$/templates/Documento/ModificaDocumento.html" />
+        <option value="$PROJECT_DIR$/templates/Documento/ModificaDocumentoOperatore.html" />
+        <option value="$PROJECT_DIR$/templates/Materiale/EliminaMateriale.html" />
+        <option value="$PROJECT_DIR$/templates/Materiale/FormInserimentoMateriale.html" />
+        <option value="$PROJECT_DIR$/templates/Materiale/GestioneMateriali.html" />
+        <option value="$PROJECT_DIR$/templates/Materiale/GestioneMaterialiOperatore.html" />
+        <option value="$PROJECT_DIR$/templates/Materiale/ModificaMateriale.html" />
+        <option value="$PROJECT_DIR$/templates/Prova/EliminaProva.html" />
+        <option value="$PROJECT_DIR$/templates/Prova/FormInserimentoProva.html" />
+        <option value="$PROJECT_DIR$/templates/Prova/GestioneProva.html" />
+        <option value="$PROJECT_DIR$/templates/Prova/GestioneProvaOperatore.html" />
+        <option value="$PROJECT_DIR$/templates/Prova/ModificaProva.html" />
+        <option value="$PROJECT_DIR$/templates/Report/Report.html" />
+        <option value="$PROJECT_DIR$/templates/Ricerca/Ricerca_ad.html" />
+        <option value="$PROJECT_DIR$/templates/Ricerca/Ricerca_ad_Leader.html" />
+        <option value="$PROJECT_DIR$/templates/Struttura/EliminaStruttura.html" />
+        <option value="$PROJECT_DIR$/templates/Struttura/FormInserimentoStruttura.html" />
+        <option value="$PROJECT_DIR$/templates/Struttura/GestioneStrutture.html" />
+        <option value="$PROJECT_DIR$/templates/Struttura/GestioneStruttureOperatore.html" />
+        <option value="$PROJECT_DIR$/templates/Struttura/ModificaStruttura.html" />
+        <option value="$PROJECT_DIR$/templates/Utente/GestioneUtente.html" />
+        <option value="$PROJECT_DIR$/templates/Contatti.html" />
+        <option value="$PROJECT_DIR$/templates/FormEliminaDocumento.html" />
+        <option value="$PROJECT_DIR$/templates/FormInserimentoDocumento.html" />
+        <option value="$PROJECT_DIR$/templates/FormInserimentoDocumentoErrore.html" />
+        <option value="$PROJECT_DIR$/templates/FormInserimentoMateriale.html" />
+        <option value="$PROJECT_DIR$/templates/FormInserimentoProva.html" />
+        <option value="$PROJECT_DIR$/templates/FormInserimentoStruttura.html" />
+        <option value="$PROJECT_DIR$/templates/gestioneUtenze.html" />
+        <option value="$PROJECT_DIR$/templates/homeLeader.html" />
+        <option value="$PROJECT_DIR$/templates/homeOperatore.html" />
+        <option value="$PROJECT_DIR$/templates/homeUser.html" />
+        <option value="$PROJECT_DIR$/templates/NoPermesso.html" />
+        <option value="$PROJECT_DIR$/templates/ricerca.html" />
+        <option value="$PROJECT_DIR$/templates/ricercaAdvanced.html" />
+        <option value="$PROJECT_DIR$/static/css/main.css" />
+        <option value="$PROJECT_DIR$/templates/Ricerca/ricerca.html" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="y" value="64" />
+    <option name="width" value="1366" />
+    <option name="height" value="663" />
+  </component>
   <component name="ProjectId" id="1XCUFU3IBpy6DwyLMyOvzlbps5A" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Example" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Example" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Example" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Example" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Example" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Example" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Example" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Example" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Example" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Example" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="Report" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Example" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Example" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="Ricerca" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -25,6 +271,7 @@
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
@@ -37,6 +284,18 @@
       <recent name="D:\PyCharmProject\Strutture\static\js\Operatore" />
       <recent name="D:\PyCharmProject\Strutture\static\js\Utente" />
     </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
   </component>
   <component name="RunManager" selected="Python.app">
     <configuration name="app" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
@@ -122,8 +381,66 @@
       <workItem from="1582755446225" duration="2665000" />
       <workItem from="1582790178940" duration="17000" />
       <workItem from="1583168596459" duration="6219000" />
+      <workItem from="1585414300313" duration="13020000" />
     </task>
     <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="13020000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Favorites" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2753404" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info anchor="bottom" id="Python Console" />
+      <window_info anchor="bottom" id="Terminal" />
+      <window_info anchor="bottom" id="Event Log" sideWeight="0.50075644" side_tool="true" weight="0.36497545" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3289689" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49924356" visible="true" weight="0.36497545" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="right" id="Database" />
+      <window_info anchor="right" id="R Packages" />
+      <window_info anchor="right" id="SciView" />
+      <window_info anchor="right" id="R Graphics" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+    <layout-to-restore>
+      <window_info id="Favorites" order="0" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.2753404" />
+      <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Terminal" order="1" />
+      <window_info anchor="bottom" id="Database Changes" order="2" />
+      <window_info anchor="bottom" id="Version Control" order="3" />
+      <window_info anchor="bottom" id="Event Log" order="4" side_tool="true" />
+      <window_info anchor="bottom" id="Python Console" order="5" />
+      <window_info anchor="bottom" id="Message" order="6" />
+      <window_info anchor="bottom" id="Find" order="7" visible="true" weight="0.3289689" />
+      <window_info anchor="bottom" id="Run" order="8" weight="0.36497545" />
+      <window_info anchor="bottom" id="Debug" order="9" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="10" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="11" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="12" />
+      <window_info anchor="right" id="R Graphics" order="0" />
+      <window_info anchor="right" id="R Packages" order="1" />
+      <window_info anchor="right" id="Database" order="2" />
+      <window_info anchor="right" id="SciView" order="3" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="4" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="5" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="6" weight="0.25" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -177,7 +494,362 @@
     <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1580570692960" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Example$app.coverage" NAME="app Coverage Results" MODIFIED="1585428171725" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Strutture$prova.coverage" NAME="prova Coverage Results" MODIFIED="1582664102663" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Strutture$app.coverage" NAME="app Coverage Results" MODIFIED="1583174245273" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$USER_HOME$/miniconda3/envs/WidgetBenchmarkTesting/Lib/site-packages/flask/helpers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="134">
+          <caret line="176" column="4" selection-start-line="176" selection-start-column="4" selection-end-line="176" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Model/gestore.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="579">
+          <caret line="90" column="116" lean-forward="true" selection-start-line="90" selection-start-column="116" selection-end-line="90" selection-end-column="116" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/Documento/EliminazioneDocumento.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="381">
+          <caret line="55" column="5" selection-start-line="55" selection-start-column="5" selection-end-line="55" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/Documento/ErroreInserimento.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="398">
+          <caret line="55" column="5" selection-start-line="55" selection-start-column="5" selection-end-line="55" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/Documento/FormInserimentoDocumento.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="363">
+          <caret line="56" selection-start-line="56" selection-end-line="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/Documento/GestioneDocumentiLeader.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="379">
+          <caret line="56" selection-start-line="56" selection-end-line="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/Documento/GestioneDocumento.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="368">
+          <caret line="55" selection-start-line="55" selection-end-line="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/Documento/GestioneDocumentoOperatore.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="55" selection-start-line="55" selection-end-line="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/Documento/ModificaCampi.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="441">
+          <caret line="56" selection-start-line="56" selection-end-line="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/Documento/ModificaDocumento.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="467">
+          <caret line="56" selection-start-line="56" selection-end-line="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/Documento/ModificaDocumentoOperatore.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="526">
+          <caret line="56" selection-start-line="56" selection-end-line="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/Documento/ModificaFoglioDiLavoro.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/Materiale/EliminaMateriale.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="477">
+          <caret line="52" selection-start-line="52" selection-end-line="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/Materiale/FormInserimentoMateriale.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="55" selection-start-line="55" selection-end-line="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/Materiale/GestioneMateriali.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="348">
+          <caret line="52" selection-start-line="52" selection-end-line="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/Materiale/GestioneMaterialiOperatore.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="55" selection-start-line="55" selection-end-line="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/Materiale/ModificaMateriale.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="52" selection-start-line="52" selection-end-line="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/Prova/EliminaProva.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="49" selection-start-line="49" selection-end-line="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/Prova/FormInserimentoProva.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="55" selection-start-line="55" selection-end-line="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/Prova/GestioneProva.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="51" selection-start-line="51" selection-end-line="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/Prova/GestioneProvaOperatore.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="526">
+          <caret line="55" selection-start-line="55" selection-end-line="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/Prova/ModificaProva.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="314">
+          <caret line="50" selection-start-line="50" selection-end-line="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/Ricerca/Ricerca_ad.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="59" selection-start-line="59" selection-end-line="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/Ricerca/Ricerca_ad_Leader.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="461">
+          <caret line="59" selection-start-line="59" selection-end-line="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/Struttura/EliminaStruttura.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="50" selection-start-line="50" selection-end-line="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/Struttura/FormInserimentoStruttura.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="50" selection-start-line="50" selection-end-line="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/Struttura/GestioneStrutture.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="379">
+          <caret line="51" selection-start-line="51" selection-end-line="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/Struttura/GestioneStruttureOperatore.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="50" selection-start-line="50" selection-end-line="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/Struttura/ModificaStruttura.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="358">
+          <caret line="50" selection-start-line="50" selection-end-line="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/Utente/GestioneUtente.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="56" selection-start-line="56" selection-end-line="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/Contatti.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="56" selection-start-line="56" selection-end-line="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/FormEliminaDocumento.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="56" selection-start-line="56" selection-end-line="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/FormInserimentoDocumento.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="56" selection-start-line="56" selection-end-line="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/FormInserimentoDocumentoErrore.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="55" column="10" lean-forward="true" selection-start-line="55" selection-start-column="10" selection-end-line="55" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/FormInserimentoMateriale.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="53" selection-start-line="53" selection-end-line="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/FormInserimentoProva.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="53" selection-start-line="53" selection-end-line="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/FormInserimentoStruttura.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="50" selection-start-line="50" selection-end-line="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/homeUser.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="47" selection-start-line="47" selection-end-line="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="46" column="30" lean-forward="true" selection-start-line="46" selection-start-column="30" selection-end-line="46" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/ricerca.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="424">
+          <caret line="56" selection-start-line="56" selection-end-line="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/ricercaAdvanced.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="56" selection-start-line="56" selection-end-line="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/signUp.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/NoPermesso.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="41" column="63" selection-start-line="41" selection-start-column="63" selection-end-line="41" selection-end-column="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/homeOperatore.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="54" selection-start-line="54" selection-end-line="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/homeLeader.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="47" selection-start-line="47" selection-end-line="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/home.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="53" column="10" lean-forward="true" selection-start-line="53" selection-start-column="10" selection-end-line="53" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/gestioneUtenze.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="56" selection-start-line="56" selection-end-line="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="241" column="8" selection-start-line="241" selection-start-column="8" selection-end-line="241" selection-end-column="8" />
+          <folding>
+            <element signature="e#0#87#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/css/main.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="222">
+          <caret line="184" lean-forward="true" selection-start-line="184" selection-end-line="184" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/Report/Report.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="326">
+          <caret line="57" selection-start-line="57" selection-end-line="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/Ricerca/ricerca.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="51" column="17" selection-start-line="51" selection-start-column="17" selection-end-line="51" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
   </component>
 </project>

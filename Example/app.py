@@ -3,6 +3,7 @@ from Model.gestore import *
 from flask import jsonify
 import datetime
 import pandas as pd
+import distutils.util
 from werkzeug.utils import secure_filename
 
 Amministratore = 'Amministratore'
@@ -26,11 +27,14 @@ def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 
-def Scaduto(dataInserimento, flag):
+def Scaduto(dataInserimento, flag, scadenza):
     '''
     :param dataInserimento:  datetime
     :param flag: boolean
+    :param scadenza: boolean
     '''
+    if (not scadenza):
+        return False
     dataCorrente = datetime.datetime.now().date()
     if (not flag) or (dataCorrente - dataInserimento).days > 30:
         return True
@@ -41,8 +45,8 @@ def Scaduto(dataInserimento, flag):
 regUsers = []
 
 
-def AnnullaTuttoVaiLogIn(username, ruolo, data, flag,  url):
-    if ([username, ruolo] not in regUsers) or (Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(flag))):
+def AnnullaTuttoVaiLogIn(username, ruolo, data, flag, scadenza, url):
+    if ([username, ruolo] not in regUsers) or (Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(distutils.util.strtobool(flag)), bool(distutils.util.strtobool(scadenza)))):
         if [username, ruolo] in regUsers:
             regUsers.remove([username, ruolo])
 
@@ -51,6 +55,7 @@ def AnnullaTuttoVaiLogIn(username, ruolo, data, flag,  url):
         resp.set_cookie('ruolo', '', expires=0)
         resp.set_cookie('dataIns', '', expires=0)
         resp.set_cookie('flag', '', expires=0)
+        resp.set_cookie('scadenza', '', expires=0)
         return resp
     else:
         return make_response(render_template('/' + url))
@@ -63,17 +68,18 @@ def main():
     ruolo = request.cookies.get('ruolo')
     data = request.cookies.get('dataIns')
     flag = request.cookies.get('flag')
+    scadenza = request.cookies.get('scadenza')
 
     if ruolo not in [Amministratore, Master, Leader, Operatore, UtenteSemplice, UtentePro]:
         return make_response(render_template("index.html"))
     elif ruolo == Amministratore or ruolo == Master:
-        return AnnullaTuttoVaiLogIn(username, ruolo, data, flag, 'Home.html')
+        return AnnullaTuttoVaiLogIn(username, ruolo, data, flag, scadenza, 'Home.html')
     elif ruolo == Operatore:
-        return AnnullaTuttoVaiLogIn(username, ruolo, data, flag, 'HomeOperatore.html')
+        return AnnullaTuttoVaiLogIn(username, ruolo, data, flag, scadenza, 'HomeOperatore.html')
     elif ruolo == Leader:
-        return AnnullaTuttoVaiLogIn(username, ruolo, data, flag, 'homeLeader.html')
+        return AnnullaTuttoVaiLogIn(username, ruolo, data, flag, scadenza, 'homeLeader.html')
     elif ruolo == UtenteSemplice or ruolo == UtentePro:
-        return AnnullaTuttoVaiLogIn(username, ruolo, data, flag, 'HomeUser.html')
+        return AnnullaTuttoVaiLogIn(username, ruolo, data, flag, scadenza, 'HomeUser.html')
     else:
         return make_response(render_template("index.html"))
 #Log in
@@ -83,12 +89,11 @@ def main_post_login():
     login = gestore.Login(request.form['Username'].upper(), request.form['pass'])
 
     if login.count() == 1:
-        if Scaduto(login[0]["dataInserimento"].date(), login[0]['flag']):
+        if Scaduto(login[0]["dataInserimento"].date(), login[0]['flag'], login[0]['scadenza']):
             if [login[0]["_id"], login[0]["ruolo"]] in regUsers:
                 regUsers.remove([login[0]["_id"], login[0]["ruolo"]])
             return redirect(request.url)
         else:
-
             if login[0]["ruolo"] == Amministratore or login[0]["ruolo"] == Master:
                 resp = make_response(render_template('/Home.html'))
             elif login[0]["ruolo"] == Leader:
@@ -102,6 +107,7 @@ def main_post_login():
             resp.set_cookie('ruolo', login[0]["ruolo"])
             resp.set_cookie('dataIns', login[0]["dataInserimento"].date().strftime("%Y-%m-%d"))
             resp.set_cookie('flag', str(login[0]['flag']))
+            resp.set_cookie('scadenza', str(login[0]['scadenza']))
 
             if [login[0]["_id"], login[0]["ruolo"]] not in regUsers:
                 regUsers.append([login[0]["_id"], login[0]["ruolo"]])
@@ -121,17 +127,18 @@ def main_home():
     ruolo = request.cookies.get('ruolo')
     data = request.cookies.get('dataIns')
     flag = request.cookies.get('flag')
+    scadenza = request.cookies.get('scadenza')
 
     if ruolo not in [Amministratore, Master, Leader, Operatore, UtenteSemplice, UtentePro]:
         return make_response(render_template("index.html"))
     elif ruolo == Amministratore or ruolo == Master:
-        return AnnullaTuttoVaiLogIn(username, ruolo, data, flag, 'Home.html')
+        return AnnullaTuttoVaiLogIn(username, ruolo, data, flag, scadenza, 'Home.html')
     elif ruolo == Operatore:
-        return AnnullaTuttoVaiLogIn(username, ruolo, data, flag, 'HomeOperatore.html')
+        return AnnullaTuttoVaiLogIn(username, ruolo, data, flag, scadenza, 'HomeOperatore.html')
     elif ruolo == Leader:
-        return AnnullaTuttoVaiLogIn(username, ruolo, data, flag, 'homeLeader.html')
+        return AnnullaTuttoVaiLogIn(username, ruolo, data, flag, scadenza, 'homeLeader.html')
     elif ruolo == UtenteSemplice or ruolo == UtentePro:
-        return AnnullaTuttoVaiLogIn(username, ruolo, data, flag, 'HomeUser.html')
+        return AnnullaTuttoVaiLogIn(username, ruolo, data, flag, scadenza, 'HomeUser.html')
     else:
         return make_response(render_template("index.html"))
 
@@ -142,8 +149,9 @@ def getProvince():
     ruolo = request.cookies.get('ruolo')
     data = request.cookies.get('dataIns')
     flag = request.cookies.get('flag')
+    scadenza = request.cookies.get('scadenza')
 
-    if ([username, ruolo] not in regUsers) or (Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(flag))):
+    if ([username, ruolo] not in regUsers) or (Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(distutils.util.strtobool(flag)), bool(distutils.util.strtobool(scadenza)))):
         if [username, ruolo] in regUsers:
             regUsers.remove([username, ruolo])
 
@@ -152,6 +160,7 @@ def getProvince():
         resp.set_cookie('ruolo', '', expires=0)
         resp.set_cookie('dataIns', '', expires=0)
         resp.set_cookie('flag', '', expires=0)
+        resp.set_cookie('scadenza', '', expires=0)
         return resp
     else:
         gestore = GestoreForWrite()
@@ -171,8 +180,9 @@ def getComuni():
     ruolo = request.cookies.get('ruolo')
     data = request.cookies.get('dataIns')
     flag = request.cookies.get('flag')
+    scadenza = request.cookies.get('scadenza')
 
-    if ([username, ruolo] not in regUsers) or (Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(flag))):
+    if ([username, ruolo] not in regUsers) or (Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(distutils.util.strtobool(flag)), bool(distutils.util.strtobool(scadenza)))):
         if [username, ruolo] in regUsers:
             regUsers.remove([username, ruolo])
 
@@ -181,6 +191,7 @@ def getComuni():
         resp.set_cookie('ruolo', '', expires=0)
         resp.set_cookie('dataIns', '', expires=0)
         resp.set_cookie('flag', '', expires=0)
+        resp.set_cookie('scadenza', '', expires=0)
         return resp
     else:
         gestore = GestoreForWrite()
@@ -200,8 +211,9 @@ def Contatti():
     ruolo = request.cookies.get('ruolo')
     data = request.cookies.get('dataIns')
     flag = request.cookies.get('flag')
+    scadenza = request.cookies.get('scadenza')
 
-    if ([username, ruolo] not in regUsers) or (Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(flag))):
+    if ([username, ruolo] not in regUsers) or (Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(distutils.util.strtobool(flag)), bool(distutils.util.strtobool(scadenza)))):
         if [username, ruolo] in regUsers:
             regUsers.remove([username, ruolo])
 
@@ -210,6 +222,7 @@ def Contatti():
         resp.set_cookie('ruolo', '', expires=0)
         resp.set_cookie('dataIns', '', expires=0)
         resp.set_cookie('flag', '', expires=0)
+        resp.set_cookie('scadenza', '', expires=0)
         return resp
     else:
         resp = make_response(render_template("/Contatti.html"))
@@ -221,8 +234,11 @@ def getGestioneDocumento():
     ruolo = request.cookies.get('ruolo')
     data = request.cookies.get('dataIns')
     flag = request.cookies.get('flag')
+    scadenza = request.cookies.get('scadenza')
+
     #controllo scadenza ed esistenza del ruolo
-    if ([username, ruolo] not in regUsers) or (Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(flag))):
+    if ([username, ruolo] not in regUsers) or (Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(distutils.util.strtobool(flag)), bool(distutils.util.strtobool(scadenza)))):
+
         if [username, ruolo] in regUsers:
             regUsers.remove([username, ruolo])
 
@@ -231,6 +247,7 @@ def getGestioneDocumento():
         resp.set_cookie('ruolo', '', expires=0)
         resp.set_cookie('dataIns', '', expires=0)
         resp.set_cookie('flag', '', expires=0)
+        resp.set_cookie('scadenza', '', expires=0)
         return resp
     else:
         if ruolo not in [Amministratore, Master, Leader, Operatore]:
@@ -252,8 +269,10 @@ def getGestioneMateriale():
     ruolo = request.cookies.get('ruolo')
     data = request.cookies.get('dataIns')
     flag = request.cookies.get('flag')
+    scadenza = request.cookies.get('scadenza')
+
     #controllo scadenza ed esistenza del ruolo
-    if ([username, ruolo] not in regUsers) or (Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(flag))):
+    if ([username, ruolo] not in regUsers) or (Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(distutils.util.strtobool(flag)), bool(distutils.util.strtobool(scadenza)))):
         if [username, ruolo] in regUsers:
             regUsers.remove([username, ruolo])
 
@@ -262,6 +281,7 @@ def getGestioneMateriale():
         resp.set_cookie('ruolo', '', expires=0)
         resp.set_cookie('dataIns', '', expires=0)
         resp.set_cookie('flag', '', expires=0)
+        resp.set_cookie('scadenza', '', expires=0)
         return resp
     else:
         if ruolo not in [Amministratore, Master, Leader, Operatore]:
@@ -283,9 +303,11 @@ def getGestioneProve():
     ruolo = request.cookies.get('ruolo')
     data = request.cookies.get('dataIns')
     flag = request.cookies.get('flag')
+    scadenza = request.cookies.get('scadenza')
+
     # controllo scadenza ed esistenza del ruolo
     if ([username, ruolo] not in regUsers) or (
-            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(flag))):
+            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(distutils.util.strtobool(flag)), bool(distutils.util.strtobool(scadenza)))):
         if [username, ruolo] in regUsers:
             regUsers.remove([username, ruolo])
 
@@ -294,6 +316,7 @@ def getGestioneProve():
         resp.set_cookie('ruolo', '', expires=0)
         resp.set_cookie('dataIns', '', expires=0)
         resp.set_cookie('flag', '', expires=0)
+        resp.set_cookie('scadenza', '', expires=0)
         return resp
     else:
         if ruolo not in [Amministratore, Master, Leader, Operatore]:
@@ -315,9 +338,11 @@ def getGestioneStruttura():
     ruolo = request.cookies.get('ruolo')
     data = request.cookies.get('dataIns')
     flag = request.cookies.get('flag')
+    scadenza = request.cookies.get('scadenza')
+
     # controllo scadenza ed esistenza del ruolo
     if ([username, ruolo] not in regUsers) or (
-            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(flag))):
+            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(distutils.util.strtobool(flag)), bool(distutils.util.strtobool(scadenza)))):
         if [username, ruolo] in regUsers:
             regUsers.remove([username, ruolo])
 
@@ -326,6 +351,7 @@ def getGestioneStruttura():
         resp.set_cookie('ruolo', '', expires=0)
         resp.set_cookie('dataIns', '', expires=0)
         resp.set_cookie('flag', '', expires=0)
+        resp.set_cookie('scadenza', '', expires=0)
         return resp
     else:
         if ruolo not in [Amministratore, Master, Leader, Operatore]:
@@ -347,9 +373,11 @@ def getGestioneUtente():
     ruolo = request.cookies.get('ruolo')
     data = request.cookies.get('dataIns')
     flag = request.cookies.get('flag')
+    scadenza = request.cookies.get('scadenza')
+
     # controllo scadenza ed esistenza del ruolo
     if ([username, ruolo] not in regUsers) or (
-            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(flag))):
+            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(distutils.util.strtobool(flag)), bool(distutils.util.strtobool(scadenza)))):
         if [username, ruolo] in regUsers:
             regUsers.remove([username, ruolo])
 
@@ -358,6 +386,7 @@ def getGestioneUtente():
         resp.set_cookie('ruolo', '', expires=0)
         resp.set_cookie('dataIns', '', expires=0)
         resp.set_cookie('flag', '', expires=0)
+        resp.set_cookie('scadenza', '', expires=0)
         return resp
     else:
         if ruolo not in [Amministratore, Master]:
@@ -375,9 +404,11 @@ def getRicerca():
     ruolo = request.cookies.get('ruolo')
     data = request.cookies.get('dataIns')
     flag = request.cookies.get('flag')
+    scadenza = request.cookies.get('scadenza')
+
     # controllo scadenza ed esistenza del ruolo
     if ([username, ruolo] not in regUsers) or (
-            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(flag))):
+            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(distutils.util.strtobool(flag)), bool(distutils.util.strtobool(scadenza)))):
         if [username, ruolo] in regUsers:
             regUsers.remove([username, ruolo])
 
@@ -386,6 +417,7 @@ def getRicerca():
         resp.set_cookie('ruolo', '', expires=0)
         resp.set_cookie('dataIns', '', expires=0)
         resp.set_cookie('flag', '', expires=0)
+        resp.set_cookie('scadenza', '', expires=0)
         return resp
     else:
         if ruolo not in [Amministratore, Master, Leader, UtenteSemplice, UtentePro]:
@@ -406,9 +438,11 @@ def getReport():
     ruolo = request.cookies.get('ruolo')
     data = request.cookies.get('dataIns')
     flag = request.cookies.get('flag')
+    scadenza = request.cookies.get('scadenza')
+
     # controllo scadenza ed esistenza del ruolo
     if ([username, ruolo] not in regUsers) or (
-            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(flag))):
+            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(distutils.util.strtobool(flag)), bool(distutils.util.strtobool(scadenza)))):
         if [username, ruolo] in regUsers:
             regUsers.remove([username, ruolo])
 
@@ -417,6 +451,7 @@ def getReport():
         resp.set_cookie('ruolo', '', expires=0)
         resp.set_cookie('dataIns', '', expires=0)
         resp.set_cookie('flag', '', expires=0)
+        resp.set_cookie('scadenza', '', expires=0)
         return resp
     else:
         if ruolo not in [Amministratore, Master, UtenteSemplice, UtentePro]:
@@ -435,9 +470,11 @@ def main_Documento():
     ruolo = request.cookies.get('ruolo')
     data = request.cookies.get('dataIns')
     flag = request.cookies.get('flag')
+    scadenza = request.cookies.get('scadenza')
+
     # controllo scadenza ed esistenza del ruolo
     if ([username, ruolo] not in regUsers) or (
-            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(flag))):
+            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(distutils.util.strtobool(flag)), bool(distutils.util.strtobool(scadenza)))):
         if [username, ruolo] in regUsers:
             regUsers.remove([username, ruolo])
 
@@ -446,6 +483,7 @@ def main_Documento():
         resp.set_cookie('ruolo', '', expires=0)
         resp.set_cookie('dataIns', '', expires=0)
         resp.set_cookie('flag', '', expires=0)
+        resp.set_cookie('scadenza', '', expires=0)
         return resp
     else:
         if ruolo not in [Amministratore, Master, Leader, Operatore]:
@@ -462,9 +500,11 @@ def main_eliminazione():
     ruolo = request.cookies.get('ruolo')
     data = request.cookies.get('dataIns')
     flag = request.cookies.get('flag')
+    scadenza = request.cookies.get('scadenza')
+
     # controllo scadenza ed esistenza del ruolo
     if ([username, ruolo] not in regUsers) or (
-            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(flag))):
+            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(distutils.util.strtobool(flag)), bool(distutils.util.strtobool(scadenza)))):
         if [username, ruolo] in regUsers:
             regUsers.remove([username, ruolo])
 
@@ -473,6 +513,7 @@ def main_eliminazione():
         resp.set_cookie('ruolo', '', expires=0)
         resp.set_cookie('dataIns', '', expires=0)
         resp.set_cookie('flag', '', expires=0)
+        resp.set_cookie('scadenza', '', expires=0)
         return resp
     else:
         if ruolo not in [Amministratore, Master]:
@@ -489,9 +530,11 @@ def check_esistenza_documento():
     ruolo = request.cookies.get('ruolo')
     data = request.cookies.get('dataIns')
     flag = request.cookies.get('flag')
+    scadenza = request.cookies.get('scadenza')
+
     # controllo scadenza ed esistenza del ruolo
     if ([username, ruolo] not in regUsers) or (
-            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(flag))):
+            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(distutils.util.strtobool(flag)), bool(distutils.util.strtobool(scadenza)))):
         if [username, ruolo] in regUsers:
             regUsers.remove([username, ruolo])
 
@@ -500,6 +543,7 @@ def check_esistenza_documento():
         resp.set_cookie('ruolo', '', expires=0)
         resp.set_cookie('dataIns', '', expires=0)
         resp.set_cookie('flag', '', expires=0)
+        resp.set_cookie('scadenza', '', expires=0)
         return resp
     else:
         pratica = request.args.get('NumeroPratica')
@@ -515,9 +559,11 @@ def upload_file():
     ruolo = request.cookies.get('ruolo')
     data = request.cookies.get('dataIns')
     flag = request.cookies.get('flag')
+    scadenza = request.cookies.get('scadenza')
+
     # controllo scadenza ed esistenza del ruolo
     if ([username, ruolo] not in regUsers) or (
-            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(flag))):
+            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(distutils.util.strtobool(flag)), bool(distutils.util.strtobool(scadenza)))):
         if [username, ruolo] in regUsers:
             regUsers.remove([username, ruolo])
 
@@ -526,6 +572,7 @@ def upload_file():
         resp.set_cookie('ruolo', '', expires=0)
         resp.set_cookie('dataIns', '', expires=0)
         resp.set_cookie('flag', '', expires=0)
+        resp.set_cookie('scadenza', '', expires=0)
         return resp
     else:
         print(request.form)
@@ -594,9 +641,11 @@ def download_documento():
     ruolo = request.cookies.get('ruolo')
     data = request.cookies.get('dataIns')
     flag = request.cookies.get('flag')
+    scadenza = request.cookies.get('scadenza')
+
     # controllo scadenza ed esistenza del ruolo
     if ([username, ruolo] not in regUsers) or (
-            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(flag))):
+            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(distutils.util.strtobool(flag)), bool(distutils.util.strtobool(scadenza)))):
         if [username, ruolo] in regUsers:
             regUsers.remove([username, ruolo])
 
@@ -605,6 +654,7 @@ def download_documento():
         resp.set_cookie('ruolo', '', expires=0)
         resp.set_cookie('dataIns', '', expires=0)
         resp.set_cookie('flag', '', expires=0)
+        resp.set_cookie('scadenza', '', expires=0)
         return resp
     else:
         gestore = GestoreForWrite()
@@ -622,9 +672,11 @@ def getCertificati():
     ruolo = request.cookies.get('ruolo')
     data = request.cookies.get('dataIns')
     flag = request.cookies.get('flag')
+    scadenza = request.cookies.get('scadenza')
+
     # controllo scadenza ed esistenza del ruolo
     if ([username, ruolo] not in regUsers) or (
-            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(flag))):
+            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(distutils.util.strtobool(flag)), bool(distutils.util.strtobool(scadenza)))):
         if [username, ruolo] in regUsers:
             regUsers.remove([username, ruolo])
 
@@ -633,6 +685,7 @@ def getCertificati():
         resp.set_cookie('ruolo', '', expires=0)
         resp.set_cookie('dataIns', '', expires=0)
         resp.set_cookie('flag', '', expires=0)
+        resp.set_cookie('scadenza', '', expires=0)
         return resp
     else:
         pratica = request.args.get('NumeroPratica')
@@ -655,9 +708,11 @@ def eliminaDocumento():
     ruolo = request.cookies.get('ruolo')
     data = request.cookies.get('dataIns')
     flag = request.cookies.get('flag')
+    scadenza = request.cookies.get('scadenza')
+
     # controllo scadenza ed esistenza del ruolo
     if ([username, ruolo] not in regUsers) or (
-            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(flag))):
+            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(distutils.util.strtobool(flag)), bool(distutils.util.strtobool(scadenza)))):
         if [username, ruolo] in regUsers:
             regUsers.remove([username, ruolo])
 
@@ -666,6 +721,7 @@ def eliminaDocumento():
         resp.set_cookie('ruolo', '', expires=0)
         resp.set_cookie('dataIns', '', expires=0)
         resp.set_cookie('flag', '', expires=0)
+        resp.set_cookie('scadenza', '', expires=0)
         return resp
     else:
         if ruolo == Amministratore or ruolo== Master:
@@ -683,9 +739,11 @@ def main_modificaPratica():
     ruolo = request.cookies.get('ruolo')
     data = request.cookies.get('dataIns')
     flag = request.cookies.get('flag')
+    scadenza = request.cookies.get('scadenza')
+
     # controllo scadenza ed esistenza del ruolo
     if ([username, ruolo] not in regUsers) or (
-            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(flag))):
+            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(distutils.util.strtobool(flag)), bool(distutils.util.strtobool(scadenza)))):
         if [username, ruolo] in regUsers:
             regUsers.remove([username, ruolo])
 
@@ -694,6 +752,7 @@ def main_modificaPratica():
         resp.set_cookie('ruolo', '', expires=0)
         resp.set_cookie('dataIns', '', expires=0)
         resp.set_cookie('flag', '', expires=0)
+        resp.set_cookie('scadenza', '', expires=0)
         return resp
     else:
         if ruolo not in [Amministratore, Master, Leader, Operatore]:
@@ -712,9 +771,11 @@ def findDocumento():
     ruolo = request.cookies.get('ruolo')
     data = request.cookies.get('dataIns')
     flag = request.cookies.get('flag')
+    scadenza = request.cookies.get('scadenza')
+
     # controllo scadenza ed esistenza del ruolo
     if ([username, ruolo] not in regUsers) or (
-            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(flag))):
+            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(distutils.util.strtobool(flag)), bool(distutils.util.strtobool(scadenza)))):
         if [username, ruolo] in regUsers:
             regUsers.remove([username, ruolo])
 
@@ -723,6 +784,7 @@ def findDocumento():
         resp.set_cookie('ruolo', '', expires=0)
         resp.set_cookie('dataIns', '', expires=0)
         resp.set_cookie('flag', '', expires=0)
+        resp.set_cookie('scadenza', '', expires=0)
         return resp
     else:
         gestore = GestoreForWrite()
@@ -743,9 +805,11 @@ def updateDocumnto():
     ruolo = request.cookies.get('ruolo')
     data = request.cookies.get('dataIns')
     flag = request.cookies.get('flag')
+    scadenza = request.cookies.get('scadenza')
+
     # controllo scadenza ed esistenza del ruolo
     if ([username, ruolo] not in regUsers) or (
-            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(flag))):
+            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(distutils.util.strtobool(flag)), bool(distutils.util.strtobool(scadenza)))):
         if [username, ruolo] in regUsers:
             regUsers.remove([username, ruolo])
 
@@ -754,6 +818,7 @@ def updateDocumnto():
         resp.set_cookie('ruolo', '', expires=0)
         resp.set_cookie('dataIns', '', expires=0)
         resp.set_cookie('flag', '', expires=0)
+        resp.set_cookie('scadenza', '', expires=0)
         return resp
     else:
         gestore = GestoreForWrite()
@@ -771,9 +836,11 @@ def trovaFoglioLavoro():
     ruolo = request.cookies.get('ruolo')
     data = request.cookies.get('dataIns')
     flag = request.cookies.get('flag')
+    scadenza = request.cookies.get('scadenza')
+
     # controllo scadenza ed esistenza del ruolo
     if ([username, ruolo] not in regUsers) or (
-            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(flag))):
+            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(distutils.util.strtobool(flag)), bool(distutils.util.strtobool(scadenza)))):
         if [username, ruolo] in regUsers:
             regUsers.remove([username, ruolo])
 
@@ -782,6 +849,7 @@ def trovaFoglioLavoro():
         resp.set_cookie('ruolo', '', expires=0)
         resp.set_cookie('dataIns', '', expires=0)
         resp.set_cookie('flag', '', expires=0)
+        resp.set_cookie('scadenza', '', expires=0)
         return resp
     else:
         gestore = GestoreForWrite()
@@ -796,9 +864,11 @@ def trovaFoglioApertura():
     ruolo = request.cookies.get('ruolo')
     data = request.cookies.get('dataIns')
     flag = request.cookies.get('flag')
+    scadenza = request.cookies.get('scadenza')
+
     # controllo scadenza ed esistenza del ruolo
     if ([username, ruolo] not in regUsers) or (
-            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(flag))):
+            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(distutils.util.strtobool(flag)), bool(distutils.util.strtobool(scadenza)))):
         if [username, ruolo] in regUsers:
             regUsers.remove([username, ruolo])
 
@@ -807,6 +877,7 @@ def trovaFoglioApertura():
         resp.set_cookie('ruolo', '', expires=0)
         resp.set_cookie('dataIns', '', expires=0)
         resp.set_cookie('flag', '', expires=0)
+        resp.set_cookie('scadenza', '', expires=0)
         return resp
     else:
         gestore = GestoreForWrite()
@@ -821,9 +892,11 @@ def uploadFoglio():
     ruolo = request.cookies.get('ruolo')
     data = request.cookies.get('dataIns')
     flag = request.cookies.get('flag')
+    scadenza = request.cookies.get('scadenza')
+
     # controllo scadenza ed esistenza del ruolo
     if ([username, ruolo] not in regUsers) or (
-            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(flag))):
+            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(distutils.util.strtobool(flag)), bool(distutils.util.strtobool(scadenza)))):
         if [username, ruolo] in regUsers:
             regUsers.remove([username, ruolo])
 
@@ -832,6 +905,7 @@ def uploadFoglio():
         resp.set_cookie('ruolo', '', expires=0)
         resp.set_cookie('dataIns', '', expires=0)
         resp.set_cookie('flag', '', expires=0)
+        resp.set_cookie('scadenza', '', expires=0)
         return resp
     else:
         gestore = GestoreForWrite()
@@ -849,9 +923,11 @@ def uploadApertura():
     ruolo = request.cookies.get('ruolo')
     data = request.cookies.get('dataIns')
     flag = request.cookies.get('flag')
+    scadenza = request.cookies.get('scadenza')
+
     # controllo scadenza ed esistenza del ruolo
     if ([username, ruolo] not in regUsers) or (
-            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(flag))):
+            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(distutils.util.strtobool(flag)), bool(distutils.util.strtobool(scadenza)))):
         if [username, ruolo] in regUsers:
             regUsers.remove([username, ruolo])
 
@@ -860,6 +936,7 @@ def uploadApertura():
         resp.set_cookie('ruolo', '', expires=0)
         resp.set_cookie('dataIns', '', expires=0)
         resp.set_cookie('flag', '', expires=0)
+        resp.set_cookie('scadenza', '', expires=0)
         return resp
     else:
         gestore = GestoreForWrite()
@@ -877,9 +954,11 @@ def newCertificato():
     ruolo = request.cookies.get('ruolo')
     data = request.cookies.get('dataIns')
     flag = request.cookies.get('flag')
+    scadenza = request.cookies.get('scadenza')
+
     # controllo scadenza ed esistenza del ruolo
     if ([username, ruolo] not in regUsers) or (
-            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(flag))):
+            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(distutils.util.strtobool(flag)), bool(distutils.util.strtobool(scadenza)))):
         if [username, ruolo] in regUsers:
             regUsers.remove([username, ruolo])
 
@@ -888,6 +967,7 @@ def newCertificato():
         resp.set_cookie('ruolo', '', expires=0)
         resp.set_cookie('dataIns', '', expires=0)
         resp.set_cookie('flag', '', expires=0)
+        resp.set_cookie('scadenza', '', expires=0)
         return resp
     else:
         numeroDocumenti = int(request.form['NumCertificati'])
@@ -919,9 +999,11 @@ def check_esistenza_materiale():
     ruolo = request.cookies.get('ruolo')
     data = request.cookies.get('dataIns')
     flag = request.cookies.get('flag')
+    scadenza = request.cookies.get('scadenza')
+
     # controllo scadenza ed esistenza del ruolo
     if ([username, ruolo] not in regUsers) or (
-            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(flag))):
+            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(distutils.util.strtobool(flag)), bool(distutils.util.strtobool(scadenza)))):
         if [username, ruolo] in regUsers:
             regUsers.remove([username, ruolo])
 
@@ -930,6 +1012,7 @@ def check_esistenza_materiale():
         resp.set_cookie('ruolo', '', expires=0)
         resp.set_cookie('dataIns', '', expires=0)
         resp.set_cookie('flag', '', expires=0)
+        resp.set_cookie('scadenza', '', expires=0)
         return resp
     else:
         materiale = request.args.get('Materiale')
@@ -945,9 +1028,11 @@ def get_EliminaMateriale():
     ruolo = request.cookies.get('ruolo')
     data = request.cookies.get('dataIns')
     flag = request.cookies.get('flag')
+    scadenza = request.cookies.get('scadenza')
+
     # controllo scadenza ed esistenza del ruolo
     if ([username, ruolo] not in regUsers) or (
-            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(flag))):
+            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(distutils.util.strtobool(flag)), bool(distutils.util.strtobool(scadenza)))):
         if [username, ruolo] in regUsers:
             regUsers.remove([username, ruolo])
 
@@ -956,6 +1041,7 @@ def get_EliminaMateriale():
         resp.set_cookie('ruolo', '', expires=0)
         resp.set_cookie('dataIns', '', expires=0)
         resp.set_cookie('flag', '', expires=0)
+        resp.set_cookie('scadenza', '', expires=0)
         return resp
     else:
         if ruolo not in [Amministratore, Master, Leader]:
@@ -972,9 +1058,11 @@ def get_modifica_Materiale():
     ruolo = request.cookies.get('ruolo')
     data = request.cookies.get('dataIns')
     flag = request.cookies.get('flag')
+    scadenza = request.cookies.get('scadenza')
+
     # controllo scadenza ed esistenza del ruolo
     if ([username, ruolo] not in regUsers) or (
-            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(flag))):
+            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(distutils.util.strtobool(flag)), bool(distutils.util.strtobool(scadenza)))):
         if [username, ruolo] in regUsers:
             regUsers.remove([username, ruolo])
 
@@ -983,6 +1071,7 @@ def get_modifica_Materiale():
         resp.set_cookie('ruolo', '', expires=0)
         resp.set_cookie('dataIns', '', expires=0)
         resp.set_cookie('flag', '', expires=0)
+        resp.set_cookie('scadenza', '', expires=0)
         return resp
     else:
         if ruolo not in [Amministratore, Master, Leader]:
@@ -999,9 +1088,11 @@ def get_single_materiale():
     ruolo = request.cookies.get('ruolo')
     data = request.cookies.get('dataIns')
     flag = request.cookies.get('flag')
+    scadenza = request.cookies.get('scadenza')
+
     # controllo scadenza ed esistenza del ruolo
     if ([username, ruolo] not in regUsers) or (
-            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(flag))):
+            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(distutils.util.strtobool(flag)), bool(distutils.util.strtobool(scadenza)))):
         if [username, ruolo] in regUsers:
             regUsers.remove([username, ruolo])
 
@@ -1010,6 +1101,7 @@ def get_single_materiale():
         resp.set_cookie('ruolo', '', expires=0)
         resp.set_cookie('dataIns', '', expires=0)
         resp.set_cookie('flag', '', expires=0)
+        resp.set_cookie('scadenza', '', expires=0)
         return resp
     else:
         mat = request.args.get('Materiale')
@@ -1027,9 +1119,11 @@ def eliminaMateriale():
     ruolo = request.cookies.get('ruolo')
     data = request.cookies.get('dataIns')
     flag = request.cookies.get('flag')
+    scadenza = request.cookies.get('scadenza')
+
     # controllo scadenza ed esistenza del ruolo
     if ([username, ruolo] not in regUsers) or (
-            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(flag))):
+            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(distutils.util.strtobool(flag)), bool(distutils.util.strtobool(scadenza)))):
         if [username, ruolo] in regUsers:
             regUsers.remove([username, ruolo])
 
@@ -1038,6 +1132,7 @@ def eliminaMateriale():
         resp.set_cookie('ruolo', '', expires=0)
         resp.set_cookie('dataIns', '', expires=0)
         resp.set_cookie('flag', '', expires=0)
+        resp.set_cookie('scadenza', '', expires=0)
         return resp
     else:
         if ruolo == Amministratore or ruolo == Master or ruolo == Leader:
@@ -1055,9 +1150,11 @@ def update_Materiale():
     ruolo = request.cookies.get('ruolo')
     data = request.cookies.get('dataIns')
     flag = request.cookies.get('flag')
+    scadenza = request.cookies.get('scadenza')
+
     # controllo scadenza ed esistenza del ruolo
     if ([username, ruolo] not in regUsers) or (
-            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(flag))):
+            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(distutils.util.strtobool(flag)), bool(distutils.util.strtobool(scadenza)))):
         if [username, ruolo] in regUsers:
             regUsers.remove([username, ruolo])
 
@@ -1066,6 +1163,7 @@ def update_Materiale():
         resp.set_cookie('ruolo', '', expires=0)
         resp.set_cookie('dataIns', '', expires=0)
         resp.set_cookie('flag', '', expires=0)
+        resp.set_cookie('scadenza', '', expires=0)
         return resp
     else:
         if ruolo == Amministratore or ruolo == Master or ruolo == Leader:
@@ -1086,9 +1184,11 @@ def getMateriale():
     ruolo = request.cookies.get('ruolo')
     data = request.cookies.get('dataIns')
     flag = request.cookies.get('flag')
+    scadenza = request.cookies.get('scadenza')
+
     # controllo scadenza ed esistenza del ruolo
     if ([username, ruolo] not in regUsers) or (
-            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(flag))):
+            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(distutils.util.strtobool(flag)), bool(distutils.util.strtobool(scadenza)))):
         if [username, ruolo] in regUsers:
             regUsers.remove([username, ruolo])
 
@@ -1097,6 +1197,7 @@ def getMateriale():
         resp.set_cookie('ruolo', '', expires=0)
         resp.set_cookie('dataIns', '', expires=0)
         resp.set_cookie('flag', '', expires=0)
+        resp.set_cookie('scadenza', '', expires=0)
         return resp
     else:
         gestore = GestoreForWrite()
@@ -1114,9 +1215,11 @@ def main_Materiale():
     ruolo = request.cookies.get('ruolo')
     data = request.cookies.get('dataIns')
     flag = request.cookies.get('flag')
+    scadenza = request.cookies.get('scadenza')
+
     # controllo scadenza ed esistenza del ruolo
     if ([username, ruolo] not in regUsers) or (
-            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(flag))):
+            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(distutils.util.strtobool(flag)), bool(distutils.util.strtobool(scadenza)))):
         if [username, ruolo] in regUsers:
             regUsers.remove([username, ruolo])
 
@@ -1125,6 +1228,7 @@ def main_Materiale():
         resp.set_cookie('ruolo', '', expires=0)
         resp.set_cookie('dataIns', '', expires=0)
         resp.set_cookie('flag', '', expires=0)
+        resp.set_cookie('scadenza', '', expires=0)
         return resp
     else:
         if ruolo not in [Amministratore, Master, Leader]:
@@ -1140,9 +1244,11 @@ def upload_materiale():
     ruolo = request.cookies.get('ruolo')
     data = request.cookies.get('dataIns')
     flag = request.cookies.get('flag')
+    scadenza = request.cookies.get('scadenza')
+
     # controllo scadenza ed esistenza del ruolo
     if ([username, ruolo] not in regUsers) or (
-            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(flag))):
+            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(distutils.util.strtobool(flag)), bool(distutils.util.strtobool(scadenza)))):
         if [username, ruolo] in regUsers:
             regUsers.remove([username, ruolo])
 
@@ -1151,6 +1257,7 @@ def upload_materiale():
         resp.set_cookie('ruolo', '', expires=0)
         resp.set_cookie('dataIns', '', expires=0)
         resp.set_cookie('flag', '', expires=0)
+        resp.set_cookie('scadenza', '', expires=0)
         return resp
     else:
         if ruolo not in [Amministratore, Master, Leader]:
@@ -1168,9 +1275,11 @@ def getMaterialewithDesc():
     ruolo = request.cookies.get('ruolo')
     data = request.cookies.get('dataIns')
     flag = request.cookies.get('flag')
+    scadenza = request.cookies.get('scadenza')
+
     # controllo scadenza ed esistenza del ruolo
     if ([username, ruolo] not in regUsers) or (
-            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(flag))):
+            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(distutils.util.strtobool(flag)), bool(distutils.util.strtobool(scadenza)))):
         if [username, ruolo] in regUsers:
             regUsers.remove([username, ruolo])
 
@@ -1179,6 +1288,7 @@ def getMaterialewithDesc():
         resp.set_cookie('ruolo', '', expires=0)
         resp.set_cookie('dataIns', '', expires=0)
         resp.set_cookie('flag', '', expires=0)
+        resp.set_cookie('scadenza', '', expires=0)
         return resp
     else:
         gestore = GestoreForWrite()
@@ -1198,9 +1308,11 @@ def check_esistenza_prova():
     ruolo = request.cookies.get('ruolo')
     data = request.cookies.get('dataIns')
     flag = request.cookies.get('flag')
+    scadenza = request.cookies.get('scadenza')
+
     # controllo scadenza ed esistenza del ruolo
     if ([username, ruolo] not in regUsers) or (
-            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(flag))):
+            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(distutils.util.strtobool(flag)), bool(distutils.util.strtobool(scadenza)))):
         if [username, ruolo] in regUsers:
             regUsers.remove([username, ruolo])
 
@@ -1209,6 +1321,7 @@ def check_esistenza_prova():
         resp.set_cookie('ruolo', '', expires=0)
         resp.set_cookie('dataIns', '', expires=0)
         resp.set_cookie('flag', '', expires=0)
+        resp.set_cookie('scadenza', '', expires=0)
         return resp
     else:
         prova = request.args.get('Prova')
@@ -1224,9 +1337,11 @@ def EliminaProva():
     ruolo = request.cookies.get('ruolo')
     data = request.cookies.get('dataIns')
     flag = request.cookies.get('flag')
+    scadenza = request.cookies.get('scadenza')
+
     # controllo scadenza ed esistenza del ruolo
     if ([username, ruolo] not in regUsers) or (
-            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(flag))):
+            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(distutils.util.strtobool(flag)), bool(distutils.util.strtobool(scadenza)))):
         if [username, ruolo] in regUsers:
             regUsers.remove([username, ruolo])
 
@@ -1235,6 +1350,7 @@ def EliminaProva():
         resp.set_cookie('ruolo', '', expires=0)
         resp.set_cookie('dataIns', '', expires=0)
         resp.set_cookie('flag', '', expires=0)
+        resp.set_cookie('scadenza', '', expires=0)
         return resp
     else:
         if ruolo == Amministratore or ruolo == Master or ruolo == Leader:
@@ -1249,9 +1365,11 @@ def get_modifica_prova():
     ruolo = request.cookies.get('ruolo')
     data = request.cookies.get('dataIns')
     flag = request.cookies.get('flag')
+    scadenza = request.cookies.get('scadenza')
+
     # controllo scadenza ed esistenza del ruolo
     if ([username, ruolo] not in regUsers) or (
-            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(flag))):
+            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(distutils.util.strtobool(flag)), bool(distutils.util.strtobool(scadenza)))):
         if [username, ruolo] in regUsers:
             regUsers.remove([username, ruolo])
 
@@ -1260,6 +1378,7 @@ def get_modifica_prova():
         resp.set_cookie('ruolo', '', expires=0)
         resp.set_cookie('dataIns', '', expires=0)
         resp.set_cookie('flag', '', expires=0)
+        resp.set_cookie('scadenza', '', expires=0)
         return resp
     else:
         if ruolo == Amministratore or ruolo == Master or ruolo == Leader:
@@ -1274,9 +1393,11 @@ def getProvaWithDesc():
     ruolo = request.cookies.get('ruolo')
     data = request.cookies.get('dataIns')
     flag = request.cookies.get('flag')
+    scadenza = request.cookies.get('scadenza')
+
     # controllo scadenza ed esistenza del ruolo
     if ([username, ruolo] not in regUsers) or (
-            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(flag))):
+            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(distutils.util.strtobool(flag)), bool(distutils.util.strtobool(scadenza)))):
         if [username, ruolo] in regUsers:
             regUsers.remove([username, ruolo])
 
@@ -1285,6 +1406,7 @@ def getProvaWithDesc():
         resp.set_cookie('ruolo', '', expires=0)
         resp.set_cookie('dataIns', '', expires=0)
         resp.set_cookie('flag', '', expires=0)
+        resp.set_cookie('scadenza', '', expires=0)
         return resp
     else:
         gestore = GestoreForWrite()
@@ -1303,9 +1425,11 @@ def get_single_prova():
     ruolo = request.cookies.get('ruolo')
     data = request.cookies.get('dataIns')
     flag = request.cookies.get('flag')
+    scadenza = request.cookies.get('scadenza')
+
     # controllo scadenza ed esistenza del ruolo
     if ([username, ruolo] not in regUsers) or (
-            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(flag))):
+            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(distutils.util.strtobool(flag)), bool(distutils.util.strtobool(scadenza)))):
         if [username, ruolo] in regUsers:
             regUsers.remove([username, ruolo])
 
@@ -1314,6 +1438,7 @@ def get_single_prova():
         resp.set_cookie('ruolo', '', expires=0)
         resp.set_cookie('dataIns', '', expires=0)
         resp.set_cookie('flag', '', expires=0)
+        resp.set_cookie('scadenza', '', expires=0)
         return resp
     else:
         prova = request.args.get('Prova')
@@ -1331,9 +1456,11 @@ def main_Prova():
     ruolo = request.cookies.get('ruolo')
     data = request.cookies.get('dataIns')
     flag = request.cookies.get('flag')
+    scadenza = request.cookies.get('scadenza')
+
     # controllo scadenza ed esistenza del ruolo
     if ([username, ruolo] not in regUsers) or (
-            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(flag))):
+            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(distutils.util.strtobool(flag)), bool(distutils.util.strtobool(scadenza)))):
         if [username, ruolo] in regUsers:
             regUsers.remove([username, ruolo])
 
@@ -1342,6 +1469,7 @@ def main_Prova():
         resp.set_cookie('ruolo', '', expires=0)
         resp.set_cookie('dataIns', '', expires=0)
         resp.set_cookie('flag', '', expires=0)
+        resp.set_cookie('scadenza', '', expires=0)
         return resp
     else:
         if ruolo == Amministratore or ruolo == Master or ruolo == Leader:
@@ -1356,9 +1484,11 @@ def upload_prova():
     ruolo = request.cookies.get('ruolo')
     data = request.cookies.get('dataIns')
     flag = request.cookies.get('flag')
+    scadenza = request.cookies.get('scadenza')
+
     # controllo scadenza ed esistenza del ruolo
     if ([username, ruolo] not in regUsers) or (
-            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(flag))):
+            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(distutils.util.strtobool(flag)), bool(distutils.util.strtobool(scadenza)))):
         if [username, ruolo] in regUsers:
             regUsers.remove([username, ruolo])
 
@@ -1367,6 +1497,7 @@ def upload_prova():
         resp.set_cookie('ruolo', '', expires=0)
         resp.set_cookie('dataIns', '', expires=0)
         resp.set_cookie('flag', '', expires=0)
+        resp.set_cookie('scadenza', '', expires=0)
         return resp
     else:
         if ruolo == Amministratore or ruolo == Master or ruolo == Leader:
@@ -1384,9 +1515,11 @@ def eliminaProva():
     ruolo = request.cookies.get('ruolo')
     data = request.cookies.get('dataIns')
     flag = request.cookies.get('flag')
+    scadenza = request.cookies.get('scadenza')
+
     # controllo scadenza ed esistenza del ruolo
     if ([username, ruolo] not in regUsers) or (
-            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(flag))):
+            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(distutils.util.strtobool(flag)), bool(distutils.util.strtobool(scadenza)))):
         if [username, ruolo] in regUsers:
             regUsers.remove([username, ruolo])
 
@@ -1395,6 +1528,7 @@ def eliminaProva():
         resp.set_cookie('ruolo', '', expires=0)
         resp.set_cookie('dataIns', '', expires=0)
         resp.set_cookie('flag', '', expires=0)
+        resp.set_cookie('scadenza', '', expires=0)
         return resp
     else:
         if ruolo == Amministratore or ruolo == Master or ruolo == Leader:
@@ -1412,9 +1546,11 @@ def update_prova():
     ruolo = request.cookies.get('ruolo')
     data = request.cookies.get('dataIns')
     flag = request.cookies.get('flag')
+    scadenza = request.cookies.get('scadenza')
+
     # controllo scadenza ed esistenza del ruolo
     if ([username, ruolo] not in regUsers) or (
-            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(flag))):
+            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(distutils.util.strtobool(flag)), bool(distutils.util.strtobool(scadenza)))):
         if [username, ruolo] in regUsers:
             regUsers.remove([username, ruolo])
 
@@ -1423,6 +1559,7 @@ def update_prova():
         resp.set_cookie('ruolo', '', expires=0)
         resp.set_cookie('dataIns', '', expires=0)
         resp.set_cookie('flag', '', expires=0)
+        resp.set_cookie('scadenza', '', expires=0)
         return resp
     else:
         if ruolo == Amministratore or ruolo == Master or ruolo == Leader:
@@ -1443,9 +1580,11 @@ def getProva():
     ruolo = request.cookies.get('ruolo')
     data = request.cookies.get('dataIns')
     flag = request.cookies.get('flag')
+    scadenza = request.cookies.get('scadenza')
+
     # controllo scadenza ed esistenza del ruolo
     if ([username, ruolo] not in regUsers) or (
-            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(flag))):
+            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(distutils.util.strtobool(flag)), bool(distutils.util.strtobool(scadenza)))):
         if [username, ruolo] in regUsers:
             regUsers.remove([username, ruolo])
 
@@ -1454,6 +1593,7 @@ def getProva():
         resp.set_cookie('ruolo', '', expires=0)
         resp.set_cookie('dataIns', '', expires=0)
         resp.set_cookie('flag', '', expires=0)
+        resp.set_cookie('scadenza', '', expires=0)
         return resp
     else:
         gestore = GestoreForWrite()
@@ -1472,9 +1612,11 @@ def get_EliminaStruttura():
     ruolo = request.cookies.get('ruolo')
     data = request.cookies.get('dataIns')
     flag = request.cookies.get('flag')
+    scadenza = request.cookies.get('scadenza')
+
     # controllo scadenza ed esistenza del ruolo
     if ([username, ruolo] not in regUsers) or (
-            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(flag))):
+            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(distutils.util.strtobool(flag)), bool(distutils.util.strtobool(scadenza)))):
         if [username, ruolo] in regUsers:
             regUsers.remove([username, ruolo])
 
@@ -1483,6 +1625,7 @@ def get_EliminaStruttura():
         resp.set_cookie('ruolo', '', expires=0)
         resp.set_cookie('dataIns', '', expires=0)
         resp.set_cookie('flag', '', expires=0)
+        resp.set_cookie('scadenza', '', expires=0)
         return resp
     else:
         if ruolo == Amministratore or ruolo == Master or ruolo == Leader:
@@ -1497,9 +1640,11 @@ def get_modifica_Struttura():
     ruolo = request.cookies.get('ruolo')
     data = request.cookies.get('dataIns')
     flag = request.cookies.get('flag')
+    scadenza = request.cookies.get('scadenza')
+
     # controllo scadenza ed esistenza del ruolo
     if ([username, ruolo] not in regUsers) or (
-            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(flag))):
+            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(distutils.util.strtobool(flag)), bool(distutils.util.strtobool(scadenza)))):
         if [username, ruolo] in regUsers:
             regUsers.remove([username, ruolo])
 
@@ -1508,6 +1653,7 @@ def get_modifica_Struttura():
         resp.set_cookie('ruolo', '', expires=0)
         resp.set_cookie('dataIns', '', expires=0)
         resp.set_cookie('flag', '', expires=0)
+        resp.set_cookie('scadenza', '', expires=0)
         return resp
     else:
         if ruolo == Amministratore or ruolo == Master or ruolo == Leader:
@@ -1523,9 +1669,11 @@ def check_esistenza_struttura():
     ruolo = request.cookies.get('ruolo')
     data = request.cookies.get('dataIns')
     flag = request.cookies.get('flag')
+    scadenza = request.cookies.get('scadenza')
+
     # controllo scadenza ed esistenza del ruolo
     if ([username, ruolo] not in regUsers) or (
-            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(flag))):
+            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(distutils.util.strtobool(flag)), bool(distutils.util.strtobool(scadenza)))):
         if [username, ruolo] in regUsers:
             regUsers.remove([username, ruolo])
 
@@ -1534,6 +1682,7 @@ def check_esistenza_struttura():
         resp.set_cookie('ruolo', '', expires=0)
         resp.set_cookie('dataIns', '', expires=0)
         resp.set_cookie('flag', '', expires=0)
+        resp.set_cookie('scadenza', '', expires=0)
         return resp
     else:
         struttura = request.args.get('Struttura')
@@ -1549,9 +1698,11 @@ def get_single_struttura():
     ruolo = request.cookies.get('ruolo')
     data = request.cookies.get('dataIns')
     flag = request.cookies.get('flag')
+    scadenza = request.cookies.get('scadenza')
+
     # controllo scadenza ed esistenza del ruolo
     if ([username, ruolo] not in regUsers) or (
-            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(flag))):
+            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(distutils.util.strtobool(flag)), bool(distutils.util.strtobool(scadenza)))):
         if [username, ruolo] in regUsers:
             regUsers.remove([username, ruolo])
 
@@ -1560,6 +1711,7 @@ def get_single_struttura():
         resp.set_cookie('ruolo', '', expires=0)
         resp.set_cookie('dataIns', '', expires=0)
         resp.set_cookie('flag', '', expires=0)
+        resp.set_cookie('scadenza', '', expires=0)
         return resp
     else:
         struttura = request.args.get('Struttura')
@@ -1578,9 +1730,11 @@ def main_Struttura():
     ruolo = request.cookies.get('ruolo')
     data = request.cookies.get('dataIns')
     flag = request.cookies.get('flag')
+    scadenza = request.cookies.get('scadenza')
+
     # controllo scadenza ed esistenza del ruolo
     if ([username, ruolo] not in regUsers) or (
-            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(flag))):
+            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(distutils.util.strtobool(flag)), bool(distutils.util.strtobool(scadenza)))):
         if [username, ruolo] in regUsers:
             regUsers.remove([username, ruolo])
 
@@ -1589,6 +1743,7 @@ def main_Struttura():
         resp.set_cookie('ruolo', '', expires=0)
         resp.set_cookie('dataIns', '', expires=0)
         resp.set_cookie('flag', '', expires=0)
+        resp.set_cookie('scadenza', '', expires=0)
         return resp
     else:
         if ruolo == Amministratore or ruolo == Master or ruolo == Leader:
@@ -1603,9 +1758,11 @@ def upload_struttura():
     ruolo = request.cookies.get('ruolo')
     data = request.cookies.get('dataIns')
     flag = request.cookies.get('flag')
+    scadenza = request.cookies.get('scadenza')
+
     # controllo scadenza ed esistenza del ruolo
     if ([username, ruolo] not in regUsers) or (
-            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(flag))):
+            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(distutils.util.strtobool(flag)), bool(distutils.util.strtobool(scadenza)))):
         if [username, ruolo] in regUsers:
             regUsers.remove([username, ruolo])
 
@@ -1614,6 +1771,7 @@ def upload_struttura():
         resp.set_cookie('ruolo', '', expires=0)
         resp.set_cookie('dataIns', '', expires=0)
         resp.set_cookie('flag', '', expires=0)
+        resp.set_cookie('scadenza', '', expires=0)
         return resp
     else:
         if ruolo == Amministratore or ruolo == Master or ruolo == Leader:
@@ -1632,9 +1790,11 @@ def eliminaStruttura():
     ruolo = request.cookies.get('ruolo')
     data = request.cookies.get('dataIns')
     flag = request.cookies.get('flag')
+    scadenza = request.cookies.get('scadenza')
+
     # controllo scadenza ed esistenza del ruolo
     if ([username, ruolo] not in regUsers) or (
-            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(flag))):
+            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(distutils.util.strtobool(flag)), bool(distutils.util.strtobool(scadenza)))):
         if [username, ruolo] in regUsers:
             regUsers.remove([username, ruolo])
 
@@ -1643,6 +1803,7 @@ def eliminaStruttura():
         resp.set_cookie('ruolo', '', expires=0)
         resp.set_cookie('dataIns', '', expires=0)
         resp.set_cookie('flag', '', expires=0)
+        resp.set_cookie('scadenza', '', expires=0)
         return resp
     else:
         if ruolo == Amministratore or ruolo == Master or ruolo == Leader:
@@ -1660,9 +1821,11 @@ def update_Struttura():
     ruolo = request.cookies.get('ruolo')
     data = request.cookies.get('dataIns')
     flag = request.cookies.get('flag')
+    scadenza = request.cookies.get('scadenza')
+
     # controllo scadenza ed esistenza del ruolo
     if ([username, ruolo] not in regUsers) or (
-            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(flag))):
+            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(distutils.util.strtobool(flag)), bool(distutils.util.strtobool(scadenza)))):
         if [username, ruolo] in regUsers:
             regUsers.remove([username, ruolo])
 
@@ -1671,6 +1834,7 @@ def update_Struttura():
         resp.set_cookie('ruolo', '', expires=0)
         resp.set_cookie('dataIns', '', expires=0)
         resp.set_cookie('flag', '', expires=0)
+        resp.set_cookie('scadenza', '', expires=0)
         return resp
     else:
         if ruolo == Amministratore or ruolo == Master or ruolo == Leader:
@@ -1691,9 +1855,11 @@ def getStrutture():
     ruolo = request.cookies.get('ruolo')
     data = request.cookies.get('dataIns')
     flag = request.cookies.get('flag')
+    scadenza = request.cookies.get('scadenza')
+
     # controllo scadenza ed esistenza del ruolo
     if ([username, ruolo] not in regUsers) or (
-            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(flag))):
+            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(distutils.util.strtobool(flag)), bool(distutils.util.strtobool(scadenza)))):
         if [username, ruolo] in regUsers:
             regUsers.remove([username, ruolo])
 
@@ -1702,6 +1868,7 @@ def getStrutture():
         resp.set_cookie('ruolo', '', expires=0)
         resp.set_cookie('dataIns', '', expires=0)
         resp.set_cookie('flag', '', expires=0)
+        resp.set_cookie('scadenza', '', expires=0)
         return resp
     else:
         gestore = GestoreForWrite()
@@ -1719,9 +1886,11 @@ def getStruttureWithDesc():
     ruolo = request.cookies.get('ruolo')
     data = request.cookies.get('dataIns')
     flag = request.cookies.get('flag')
+    scadenza = request.cookies.get('scadenza')
+
     # controllo scadenza ed esistenza del ruolo
     if ([username, ruolo] not in regUsers) or (
-            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(flag))):
+            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(distutils.util.strtobool(flag)), bool(distutils.util.strtobool(scadenza)))):
         if [username, ruolo] in regUsers:
             regUsers.remove([username, ruolo])
 
@@ -1730,6 +1899,7 @@ def getStruttureWithDesc():
         resp.set_cookie('ruolo', '', expires=0)
         resp.set_cookie('dataIns', '', expires=0)
         resp.set_cookie('flag', '', expires=0)
+        resp.set_cookie('scadenza', '', expires=0)
         return resp
     else:
         gestore = GestoreForWrite()
@@ -1750,9 +1920,11 @@ def checkUtente():
     ruolo = request.cookies.get('ruolo')
     data = request.cookies.get('dataIns')
     flag = request.cookies.get('flag')
+    scadenza = request.cookies.get('scadenza')
+
     # controllo scadenza ed esistenza del ruolo
     if ([username, ruolo] not in regUsers) or (
-            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(flag))):
+            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(distutils.util.strtobool(flag)), bool(distutils.util.strtobool(scadenza)))):
         if [username, ruolo] in regUsers:
             regUsers.remove([username, ruolo])
 
@@ -1761,6 +1933,7 @@ def checkUtente():
         resp.set_cookie('ruolo', '', expires=0)
         resp.set_cookie('dataIns', '', expires=0)
         resp.set_cookie('flag', '', expires=0)
+        resp.set_cookie('scadenza', '', expires=0)
         return resp
     else:
         gestore = GestoreForWrite()
@@ -1776,9 +1949,11 @@ def checkUtente_attivo():
     ruolo = request.cookies.get('ruolo')
     data = request.cookies.get('dataIns')
     flag = request.cookies.get('flag')
+    scadenza = request.cookies.get('scadenza')
+
     # controllo scadenza ed esistenza del ruolo
     if ([username, ruolo] not in regUsers) or (
-            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(flag))):
+            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(distutils.util.strtobool(flag)), bool(distutils.util.strtobool(scadenza)))):
         if [username, ruolo] in regUsers:
             regUsers.remove([username, ruolo])
 
@@ -1787,6 +1962,7 @@ def checkUtente_attivo():
         resp.set_cookie('ruolo', '', expires=0)
         resp.set_cookie('dataIns', '', expires=0)
         resp.set_cookie('flag', '', expires=0)
+        resp.set_cookie('scadenza', '', expires=0)
         return resp
     else:
         gestore = GestoreForWrite()
@@ -1804,9 +1980,11 @@ def gestioneUtenze():
     ruolo = request.cookies.get('ruolo')
     data = request.cookies.get('dataIns')
     flag = request.cookies.get('flag')
+    scadenza = request.cookies.get('scadenza')
+
     # controllo scadenza ed esistenza del ruolo
     if ([username, ruolo] not in regUsers) or (
-            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(flag))):
+            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(distutils.util.strtobool(flag)), bool(distutils.util.strtobool(scadenza)))):
         if [username, ruolo] in regUsers:
             regUsers.remove([username, ruolo])
 
@@ -1815,6 +1993,7 @@ def gestioneUtenze():
         resp.set_cookie('ruolo', '', expires=0)
         resp.set_cookie('dataIns', '', expires=0)
         resp.set_cookie('flag', '', expires=0)
+        resp.set_cookie('scadenza', '', expires=0)
         return resp
     else:
         if ruolo == Amministratore or ruolo == Master:
@@ -1829,9 +2008,11 @@ def newUtente():
     ruolo = request.cookies.get('ruolo')
     data = request.cookies.get('dataIns')
     flag = request.cookies.get('flag')
+    scadenza = request.cookies.get('scadenza')
+
     # controllo scadenza ed esistenza del ruolo
     if ([username, ruolo] not in regUsers) or (
-            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(flag))):
+            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(distutils.util.strtobool(flag)), bool(distutils.util.strtobool(scadenza)))):
         if [username, ruolo] in regUsers:
             regUsers.remove([username, ruolo])
 
@@ -1840,6 +2021,7 @@ def newUtente():
         resp.set_cookie('ruolo', '', expires=0)
         resp.set_cookie('dataIns', '', expires=0)
         resp.set_cookie('flag', '', expires=0)
+        resp.set_cookie('scadenza', '', expires=0)
         return resp
     else:
         if ruolo == Amministratore or ruolo == Master:
@@ -1866,9 +2048,11 @@ def updateRole():
     ruolo = request.cookies.get('ruolo')
     data = request.cookies.get('dataIns')
     flag = request.cookies.get('flag')
+    scadenza = request.cookies.get('scadenza')
+
     # controllo scadenza ed esistenza del ruolo
     if ([username, ruolo] not in regUsers) or (
-            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(flag))):
+            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(distutils.util.strtobool(flag)), bool(distutils.util.strtobool(scadenza)))):
         if [username, ruolo] in regUsers:
             regUsers.remove([username, ruolo])
 
@@ -1877,6 +2061,7 @@ def updateRole():
         resp.set_cookie('ruolo', '', expires=0)
         resp.set_cookie('dataIns', '', expires=0)
         resp.set_cookie('flag', '', expires=0)
+        resp.set_cookie('scadenza', '', expires=0)
         return resp
     else:
         if ruolo == Amministratore or ruolo == Master:
@@ -1899,9 +2084,11 @@ def getUtenti():
     ruolo = request.cookies.get('ruolo')
     data = request.cookies.get('dataIns')
     flag = request.cookies.get('flag')
+    scadenza = request.cookies.get('scadenza')
+
     # controllo scadenza ed esistenza del ruolo
     if ([username, ruolo] not in regUsers) or (
-            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(flag))):
+            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(distutils.util.strtobool(flag)), bool(distutils.util.strtobool(scadenza)))):
         if [username, ruolo] in regUsers:
             regUsers.remove([username, ruolo])
 
@@ -1910,6 +2097,7 @@ def getUtenti():
         resp.set_cookie('ruolo', '', expires=0)
         resp.set_cookie('dataIns', '', expires=0)
         resp.set_cookie('flag', '', expires=0)
+        resp.set_cookie('scadenza', '', expires=0)
         return resp
     else:
         if ruolo == Amministratore or ruolo == Master:
@@ -1943,9 +2131,11 @@ def check_esistenza_utente_inattivo():
     ruolo = request.cookies.get('ruolo')
     data = request.cookies.get('dataIns')
     flag = request.cookies.get('flag')
+    scadenza = request.cookies.get('scadenza')
+
     # controllo scadenza ed esistenza del ruolo
     if ([username, ruolo] not in regUsers) or (
-            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(flag))):
+            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(distutils.util.strtobool(flag)), bool(distutils.util.strtobool(scadenza)))):
         if [username, ruolo] in regUsers:
             regUsers.remove([username, ruolo])
 
@@ -1954,6 +2144,7 @@ def check_esistenza_utente_inattivo():
         resp.set_cookie('ruolo', '', expires=0)
         resp.set_cookie('dataIns', '', expires=0)
         resp.set_cookie('flag', '', expires=0)
+        resp.set_cookie('scadenza', '', expires=0)
         return resp
     else:
         gestore = GestoreForWrite()
@@ -1972,9 +2163,11 @@ def riattivaUtente():
     ruolo = request.cookies.get('ruolo')
     data = request.cookies.get('dataIns')
     flag = request.cookies.get('flag')
+    scadenza = request.cookies.get('scadenza')
+
     # controllo scadenza ed esistenza del ruolo
     if ([username, ruolo] not in regUsers) or (
-            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(flag))):
+            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(distutils.util.strtobool(flag)), bool(distutils.util.strtobool(scadenza)))):
         if [username, ruolo] in regUsers:
             regUsers.remove([username, ruolo])
 
@@ -1983,6 +2176,7 @@ def riattivaUtente():
         resp.set_cookie('ruolo', '', expires=0)
         resp.set_cookie('dataIns', '', expires=0)
         resp.set_cookie('flag', '', expires=0)
+        resp.set_cookie('scadenza', '', expires=0)
         return resp
     else:
         if ruolo == Amministratore or ruolo == Master:
@@ -2004,9 +2198,11 @@ def disattivaUtente():
     ruolo = request.cookies.get('ruolo')
     data = request.cookies.get('dataIns')
     flag = request.cookies.get('flag')
+    scadenza = request.cookies.get('scadenza')
+
     # controllo scadenza ed esistenza del ruolo
     if ([username, ruolo] not in regUsers) or (
-            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(flag))):
+            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(distutils.util.strtobool(flag)), bool(distutils.util.strtobool(scadenza)))):
         if [username, ruolo] in regUsers:
             regUsers.remove([username, ruolo])
 
@@ -2015,6 +2211,7 @@ def disattivaUtente():
         resp.set_cookie('ruolo', '', expires=0)
         resp.set_cookie('dataIns', '', expires=0)
         resp.set_cookie('flag', '', expires=0)
+        resp.set_cookie('scadenza', '', expires=0)
         return resp
     else:
         if ruolo == Amministratore or ruolo == Master:
@@ -2037,9 +2234,11 @@ def doQuerybyPratica():
     ruolo = request.cookies.get('ruolo')
     data = request.cookies.get('dataIns')
     flag = request.cookies.get('flag')
+    scadenza = request.cookies.get('scadenza')
+
     # controllo scadenza ed esistenza del ruolo
     if ([username, ruolo] not in regUsers) or (
-            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(flag))):
+            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(distutils.util.strtobool(flag)), bool(distutils.util.strtobool(scadenza)))):
         if [username, ruolo] in regUsers:
             regUsers.remove([username, ruolo])
 
@@ -2048,6 +2247,7 @@ def doQuerybyPratica():
         resp.set_cookie('ruolo', '', expires=0)
         resp.set_cookie('dataIns', '', expires=0)
         resp.set_cookie('flag', '', expires=0)
+        resp.set_cookie('scadenza', '', expires=0)
         return resp
     else:
         ob = {}
@@ -2121,9 +2321,11 @@ def doQuerybyCampi():
     ruolo = request.cookies.get('ruolo')
     data = request.cookies.get('dataIns')
     flag = request.cookies.get('flag')
+    scadenza = request.cookies.get('scadenza')
+
     # controllo scadenza ed esistenza del ruolo
     if ([username, ruolo] not in regUsers) or (
-            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(flag))):
+            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(distutils.util.strtobool(flag)), bool(distutils.util.strtobool(scadenza)))):
         if [username, ruolo] in regUsers:
             regUsers.remove([username, ruolo])
 
@@ -2132,6 +2334,7 @@ def doQuerybyCampi():
         resp.set_cookie('ruolo', '', expires=0)
         resp.set_cookie('dataIns', '', expires=0)
         resp.set_cookie('flag', '', expires=0)
+        resp.set_cookie('scadenza', '', expires=0)
         return resp
     else:
         gestore = GestoreForWrite()
@@ -2379,9 +2582,11 @@ def queryByYear():
     ruolo = request.cookies.get('ruolo')
     data = request.cookies.get('dataIns')
     flag = request.cookies.get('flag')
+    scadenza = request.cookies.get('scadenza')
+
     # controllo scadenza ed esistenza del ruolo
     if ([username, ruolo] not in regUsers) or (
-            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(flag))):
+            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(distutils.util.strtobool(flag)), bool(distutils.util.strtobool(scadenza)))):
         if [username, ruolo] in regUsers:
             regUsers.remove([username, ruolo])
 
@@ -2390,6 +2595,7 @@ def queryByYear():
         resp.set_cookie('ruolo', '', expires=0)
         resp.set_cookie('dataIns', '', expires=0)
         resp.set_cookie('flag', '', expires=0)
+        resp.set_cookie('scadenza', '', expires=0)
         return resp
     else:
         gestore = GestoreForWrite()
@@ -2416,9 +2622,11 @@ def doQueryByMateriali():
     ruolo = request.cookies.get('ruolo')
     data = request.cookies.get('dataIns')
     flag = request.cookies.get('flag')
+    scadenza = request.cookies.get('scadenza')
+
     # controllo scadenza ed esistenza del ruolo
     if ([username, ruolo] not in regUsers) or (
-            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(flag))):
+            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(distutils.util.strtobool(flag)), bool(distutils.util.strtobool(scadenza)))):
         if [username, ruolo] in regUsers:
             regUsers.remove([username, ruolo])
 
@@ -2427,6 +2635,7 @@ def doQueryByMateriali():
         resp.set_cookie('ruolo', '', expires=0)
         resp.set_cookie('dataIns', '', expires=0)
         resp.set_cookie('flag', '', expires=0)
+        resp.set_cookie('scadenza', '', expires=0)
         return resp
     else:
         gestore = GestoreForWrite()
@@ -2446,9 +2655,11 @@ def doQueryByStrutture():
     ruolo = request.cookies.get('ruolo')
     data = request.cookies.get('dataIns')
     flag = request.cookies.get('flag')
+    scadenza = request.cookies.get('scadenza')
+
     # controllo scadenza ed esistenza del ruolo
     if ([username, ruolo] not in regUsers) or (
-            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(flag))):
+            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(distutils.util.strtobool(flag)), bool(distutils.util.strtobool(scadenza)))):
         if [username, ruolo] in regUsers:
             regUsers.remove([username, ruolo])
 
@@ -2457,6 +2668,7 @@ def doQueryByStrutture():
         resp.set_cookie('ruolo', '', expires=0)
         resp.set_cookie('dataIns', '', expires=0)
         resp.set_cookie('flag', '', expires=0)
+        resp.set_cookie('scadenza', '', expires=0)
         return resp
     else:
         gestore = GestoreForWrite()
@@ -2476,9 +2688,11 @@ def doQueryByProve():
     ruolo = request.cookies.get('ruolo')
     data = request.cookies.get('dataIns')
     flag = request.cookies.get('flag')
+    scadenza = request.cookies.get('scadenza')
+
     # controllo scadenza ed esistenza del ruolo
     if ([username, ruolo] not in regUsers) or (
-            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(flag))):
+            Scaduto(datetime.datetime.strptime(data, "%Y-%m-%d").date(), bool(distutils.util.strtobool(flag)), bool(distutils.util.strtobool(scadenza)))):
         if [username, ruolo] in regUsers:
             regUsers.remove([username, ruolo])
 
@@ -2487,6 +2701,7 @@ def doQueryByProve():
         resp.set_cookie('ruolo', '', expires=0)
         resp.set_cookie('dataIns', '', expires=0)
         resp.set_cookie('flag', '', expires=0)
+        resp.set_cookie('scadenza', '', expires=0)
         return resp
     else:
         gestore = GestoreForWrite()
@@ -2505,6 +2720,8 @@ def logOut():
     ruolo = request.cookies.get('ruolo')
     data = request.cookies.get('dataIns')
     flag = request.cookies.get('flag')
+    scadenza = request.cookies.get('scadenza')
+
     # controllo scadenza ed esistenza del ruolo
     if ([username, ruolo]  in regUsers):
         regUsers.remove([username, ruolo])
@@ -2514,6 +2731,7 @@ def logOut():
     resp.set_cookie('ruolo', '', expires=0)
     resp.set_cookie('dataIns', '', expires=0)
     resp.set_cookie('flag', '', expires=0)
+    resp.set_cookie('scadenza', '', expires=0)
     return resp
 
 
